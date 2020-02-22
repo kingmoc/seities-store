@@ -1,0 +1,16 @@
+.cart-side {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-evenly;
+    margin-top: 40px;
+}
+
+.cart-total {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-evenly;
+}
+
+.cart-button {
+    margin: 30px 50px !important;
+}
