@@ -3,4 +3,10 @@
     flex-direction: column;
     align-items: center;
     margin-top: 30px;
+
+    .product-card {
+        background-color: red;
+        width: 85% !important;
+        align-items: center;
+    }
 }

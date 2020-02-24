@@ -7,7 +7,7 @@ const Hero = () => {
     return (
         <>
             <Image src={HeroOne} style={{marginTop: '20px'}}/>
-            <Header size='large' className='hero-text'>100% Organic Cotton</Header>
+            {/* <Header size='large' className='hero-text'>100% Organic Cotton</Header> */}
         </>
     );
 };
