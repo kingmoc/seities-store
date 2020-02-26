@@ -1,17 +1,24 @@
 import React, { useState, useEffect } from 'react';
 import Commerce from '@chec/commerce.js'
 import ImageGallery from 'react-image-gallery';
-import { Header, Button } from 'semantic-ui-react';
+import { Header, Button, Dropdown } from 'semantic-ui-react';
+
+import {numOfShirts} from '../misc/quanityOptions'
 
 const ProductDetails = (props) => {
 
+    console.log(props, 'some props')
+
+    const commerce = new Commerce(process.env.REACT_APP_PUBLICKEY_SANDBOX)
+
     const [product, setProduct] = useState([])
     const [images, setImages] = useState([])
+    const [numShirts, setNumShirts] = useState()
+    const [variantInfo, setVariantInfo] = useState()
 
     let productId = props.match.params.id
 
     useEffect(() => {
-        const commerce = new Commerce(process.env.REACT_APP_PUBLICKEY_SANDBOX)
         commerce.products.retrieve(productId)
           .then(res => {
             console.log(res, 'data from call')
@@ -68,10 +75,38 @@ const ProductDetails = (props) => {
     }
 
     const handleClick = e => {
-        // e.preventDefault()
-        clearActive()
+
+        const variantId = e.target.id
+        const variantOption = e.target.value
+
+        if (!e.target.classList.contains('active')) {
+            console.log('inside if')
+            setVariantInfo({[variantId]: variantOption})
+            clearActive()
+        }
+
+        if (e.target.classList.contains('active')) {
+            console.log('in side second if')
+            setVariantInfo(null)
+        }
+        
         e.target.classList.toggle('active')
-        // console.log(e.target, 'works')
+    
+    }
+
+    const getSelectedInput = (e, {value}) => {
+        console.log(value, 'value')
+        setNumShirts(value)
+    }
+
+    const addToCart = e => {
+        // e.preventDefault()
+        // commerce.cart.add(product.id, numShirts, variantInfo)
+        //     .then(res => {
+        //         console.log(res, 'response from adding to Cart')
+        //     })
+        props.setCartVisible(true)
+
     }
 
     return (
@@ -81,6 +116,14 @@ const ProductDetails = (props) => {
             {product.length !==0 && (
                 <>
                     <Header>{product.price.formatted_with_symbol}</Header>
+                    <Dropdown
+                        onChange={getSelectedInput} 
+                        // value={numShirts}
+                        fluid
+                        placeholder='How Many' 
+                        selection
+                        options={numOfShirts}
+                    />
                     {product.variants[0].options.map(size => {
                         return(
                             <Button 
@@ -88,6 +131,8 @@ const ProductDetails = (props) => {
                                 basic 
                                 key={size.id}
                                 onClick={handleClick}
+                                value={size.id}
+                                id={product.variants[0].id}
                             >
                                 {size.name}
                             </Button>
@@ -95,7 +140,7 @@ const ProductDetails = (props) => {
                     })}
                 </>
             )}
-            <Button size='large' color='green'>Add to Cart</Button>
+            <Button onClick={addToCart} size='large' color='green'>Add to Cart</Button>
         </>
     );      
 };
@@ -120,3 +165,12 @@ export default ProductDetails;
 //     },
 //   ];
 
+// commerce.cart.add(
+//     'prod_QG375vVPR5rMOg',
+//     // optional: the number of items to add
+//     1,
+//     // optional: if your product has variants, the variant and option ID to add
+//     { vrnt_RyWOwmPO9lnEa2: 'optn_zkK6oLpvEoXn0Q' }
+//   )
+
+// commerce.cart.add('productId', [num of items], {vrtn: vrtnID})
