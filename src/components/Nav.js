@@ -8,7 +8,6 @@ import CartSidebar from './sidebars/cartSidebar'
 const Nav = (props) => {
 
     const [visible, setVisible] = useState(false)
-    // const [cartVisible, setCartVisible] = useState(false)
 
     return (
         <>
@@ -20,7 +19,6 @@ const Nav = (props) => {
                 inverted
                 vertical
                 borderless
-                // width='then'
             >
                 <MenuSidebar setVisible={setVisible}/>
             </Sidebar>
@@ -29,17 +27,16 @@ const Nav = (props) => {
                 as={Menu}
                 direction='right'
                 animation='overlay'
-                // onHide={() => setCartVisible(false)}
                 onHide={() => props.setCartVisible(false)}
-                // visible={cartVisible}
                 visible={props.cartVisible}
                 inverted
                 vertical
                 borderless
-                // width='then'
             >
-                {/* <CartSidebar setCartVisible={setCartVisible}/> */}
-                <CartSidebar setCartVisible={props.setCartVisible}/>
+                <CartSidebar 
+                    setCartVisible={props.setCartVisible}
+                    cartQuanity={props.cartQuanity}
+                />
             </Sidebar>
 
             <nav>
@@ -49,15 +46,23 @@ const Nav = (props) => {
                     onClick={() => setVisible(!visible)}
                 />
                 <Image src={logoText} size='small'/>
-                <Label color='blue'>
+
+                {props.cartQuanity === 0 ? (
                     <Icon 
-                        name='shopping cart' 
-                        size='large'
-                        // onClick={() => setCartVisible(!cartVisible)}
-                        onClick={() => props.setCartVisible(!props.cartVisible)}
-                    />
-                    2
-                </Label>
+                    name='shopping cart' 
+                    size='large'
+                    onClick={() => props.setCartVisible(!props.cartVisible)}
+                />
+                ) : (
+                    <Label color='blue'>
+                        <Icon 
+                            name='shopping cart' 
+                            size='large'
+                            onClick={() => props.setCartVisible(!props.cartVisible)}
+                        />
+                        {props.cartQuanity}
+                    </Label>
+                )}
             </nav>
         </>
     );

@@ -9,17 +9,29 @@ import ProductDetails from './components/ProductDetails'
 
 function App() {
 
-    // const [test, setTest] = useState('this is a test')
     const [cartVisible, setCartVisible] = useState(false)
+    const [cartQuanity, setCartQaunity] = useState(0)
 
     return (
         <div className="App">
-            <Nav cartVisible={cartVisible} setCartVisible={setCartVisible}/>
+            <Nav 
+                cartVisible={cartVisible} 
+                setCartVisible={setCartVisible}
+                cartQuanity={cartQuanity}
+            />
             {/* Routes */}
             <Route exact path="/" component={Hero} />
             <Route exact path="/" component={ProductContainer} />
-            {/* <Route path="/products/:id" component={ProductDetails} /> */}
-            <Route path="/products/:id" render={props => <ProductDetails setCartVisible={setCartVisible} {...props}/>}/>
+            <Route path="/products/:id" render={props => {
+                return (
+                    <ProductDetails 
+                        {...props}
+                        setCartVisible={setCartVisible}
+                        setCartQaunity={setCartQaunity} 
+                        cartQuanity={cartQuanity}
+                    />
+                )
+            }}/>
         </div>
     );
 }

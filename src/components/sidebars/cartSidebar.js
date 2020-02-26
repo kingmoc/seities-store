@@ -1,7 +1,18 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import Commerce from '@chec/commerce.js'
 import { Icon, Header, Button } from 'semantic-ui-react';
 
-const cartSidebar = (props) => {
+const CartSidebar = (props) => {
+
+    const commerce = new Commerce(process.env.REACT_APP_PUBLICKEY_SANDBOX)
+
+    useEffect(() => {
+        commerce.cart.contents()
+            .then(res => {
+                console.log(res, 'response from cart retrieve method')
+            })
+    }, [props.cartQuanity])
+
     return (
         <>
             <div className='cart-side'>
@@ -26,4 +37,4 @@ const cartSidebar = (props) => {
     ); 
 };
 
-export default cartSidebar;
+export default CartSidebar;

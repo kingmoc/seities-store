@@ -7,7 +7,7 @@ import {numOfShirts} from '../misc/quanityOptions'
 
 const ProductDetails = (props) => {
 
-    console.log(props, 'some props')
+    // console.log(props, 'some props')
 
     const commerce = new Commerce(process.env.REACT_APP_PUBLICKEY_SANDBOX)
 
@@ -25,6 +25,13 @@ const ProductDetails = (props) => {
             setProduct(res)
           })
           .catch(err => console.log(err))
+        
+        commerce.cart.contents()
+        .then(res => {
+            console.log(res, 'response from cart retrieve method In product details')
+            props.setCartQaunity(res.length)
+        })
+        
     },[])
 
     useEffect(() => {
@@ -100,13 +107,13 @@ const ProductDetails = (props) => {
     }
 
     const addToCart = e => {
-        // e.preventDefault()
-        // commerce.cart.add(product.id, numShirts, variantInfo)
-        //     .then(res => {
-        //         console.log(res, 'response from adding to Cart')
-        //     })
-        props.setCartVisible(true)
-
+        e.preventDefault()
+        commerce.cart.add(product.id, numShirts, variantInfo)
+            .then(res => {
+                console.log(res, 'response from adding to Cart')
+                props.setCartVisible(true)
+                props.setCartQaunity(props.cartQuanity + 1)
+            })
     }
 
     return (

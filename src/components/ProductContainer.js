@@ -5,10 +5,11 @@ import ProductCard from '../components/ProductCard'
 
 const ProductContainer = () => {
 
+    const commerce = new Commerce(process.env.REACT_APP_PUBLICKEY_SANDBOX)
     const [products, setProducts] = useState([])
 
     useEffect(() => {
-        const commerce = new Commerce(process.env.REACT_APP_PUBLICKEY_SANDBOX)
+        
         commerce.products.list()
           .then(res => {
             setProducts(res.data)
