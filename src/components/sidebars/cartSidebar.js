@@ -1,17 +1,11 @@
-import React, { useState, useEffect } from 'react';
-import Commerce from '@chec/commerce.js'
-import { Icon, Header, Button } from 'semantic-ui-react';
+import React from 'react';
+import { Icon, Header, Button, Item, List, Segment } from 'semantic-ui-react';
+
+import CartItems from './cartItems'
 
 const CartSidebar = (props) => {
 
-    const commerce = new Commerce(process.env.REACT_APP_PUBLICKEY_SANDBOX)
-
-    useEffect(() => {
-        commerce.cart.contents()
-            .then(res => {
-                console.log(res, 'response from cart retrieve method')
-            })
-    }, [props.cartQuanity])
+    console.log(props, 'props from cart')
 
     return (
         <>
@@ -24,15 +18,38 @@ const CartSidebar = (props) => {
                     onClick={() => props.setCartVisible(false)}
                 />
             </div>
+
+            {props.cart && props.cart.total_unique_items > 0 && (
+                <List inverted>
+                   {props.cart.line_items.map(item => (
+                       <List.Item className='cart-item' key={item.id}>
+                           <CartItems item={item} />
+                       </List.Item>
+                   ))}
+                </List>
+            )} 
+
             <div className='cart-total'>
-                <Header color='grey' size='medium'>Subtotal</Header>
-                <Header color='grey' size='medium'>$0.00</Header>
+                <h2>Subtotal</h2>
+                <h2>{props.cart && props.cart.subtotal.formatted_with_symbol}</h2>
             </div>
-            <Header size='small' textAlign='center' color='red'>Shipping and Taxes calculated at checkout</Header>
-            <Button inverted color='green' size='big' className='cart-button'>
-                Checkout
-                <Icon name='arrow right' />
-            </Button>
+            {props.cart && !props.cart.total_items && (
+                <Segment className='empty-cart-segment' secondary>
+                    <Header>Your Cart is currently Empty</Header>
+                    <p>
+                        It would make you very happy if you added an item to the cart
+                    </p>
+                </Segment>
+            )}
+            {props.cart && props.cart.total_items && (
+                <>
+                    <Header size='small' textAlign='center' color='red'>Shipping and Taxes calculated at checkout</Header>
+                    <Button inverted color='green' size='huge' className='cart-button'>
+                        Checkout
+                        <Icon name='arrow right' />
+                    </Button>
+                </>
+            )}
         </>
     ); 
 };

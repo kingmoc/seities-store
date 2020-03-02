@@ -9,8 +9,33 @@
     display: flex;
     align-items: baseline;
     justify-content: space-evenly;
+
+    h2 {
+        color: white;
+    }
 }
 
 .cart-button {
-    margin: 30px 50px !important;
+    display: block !important;
+    margin: 30px auto !important;
+}
+
+.cart-item {
+    width: 90%;
+    margin: 20px auto;
+
+    h3 {
+        color: #fecd00;
+        margin: 0;
+    }
+
+    h4 {
+        color: #34b49f;
+        margin: 0;
+    }
+}
+
+.empty-cart-segment {
+    width: 90%;
+    margin: 0 auto !important;
 }

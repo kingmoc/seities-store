@@ -1,0 +1,18 @@
+.quanity-group {
+    display: flex;
+    margin-top: 5px;
+
+    .quan-buttons {
+        width: 50px;
+        margin: 0 !important;
+    }
+
+    .input-quanity {
+        width: 40px;
+        margin: 0 3px;
+    }
+}
+
+.cart-item-total {
+    margin-top: 5px !important;
+}

@@ -11,10 +11,11 @@ const ProductDetails = (props) => {
 
     const commerce = new Commerce(process.env.REACT_APP_PUBLICKEY_SANDBOX)
 
+    const [variantInfo, setVariantInfo] = useState(1)
     const [product, setProduct] = useState([])
     const [images, setImages] = useState([])
-    const [numShirts, setNumShirts] = useState(1)
-    const [variantInfo, setVariantInfo] = useState(1)
+    const [numShirts, setNumShirts] = useState(1)    
+    const [inCart, setInCart] = useState(false)
 
     let productId = props.match.params.id
 
@@ -26,11 +27,11 @@ const ProductDetails = (props) => {
           })
           .catch(err => console.log(err))
         
-        commerce.cart.contents()
-        .then(res => {
-            console.log(res, 'response from cart retrieve method In product details')
-            props.setCartQaunity(res.length)
-        })
+        // commerce.cart.contents()
+        // .then(res => {
+        //     console.log(res, 'response from cart retrieve method In product details')
+        //     // props.setCartQaunity(res.length)
+        // })
         
     },[])
 
@@ -85,6 +86,8 @@ const ProductDetails = (props) => {
         const variantId = e.target.id
         const variantOption = e.target.value
 
+        setInCart(false)
+
         if (!e.target.classList.contains('active')) {
             setVariantInfo({[variantId]: variantOption})
             clearActive()
@@ -98,30 +101,19 @@ const ProductDetails = (props) => {
     }
 
     const getQuanity = (e, {value}) => {
+        setInCart(false)
         setNumShirts(value)
     }
 
-    const addToCart = e => {
-        // e.preventDefault()
-        // commerce.cart.add(product.id, numShirts, variantInfo)
-        //     .then(res => {
-        //         console.log(res, 'response from adding to Cart')
-        //         props.setCartVisible(true)
-        //         props.setCartQaunity(props.cartQuanity + 1)
-        //     })
-
-        if (variantInfo !== 1) {
-            console.log('add to cart!')
-            clearActive()
+    const handleButtonAddCart = e => {
+        e.preventDefault()
+        if(variantInfo && variantInfo !== 1) {
+            props.addToCart(productId, numShirts, variantInfo)
         } else {
             setVariantInfo(false)
         }
-
-
-        console.log(product.id, 'product ID')
-        console.log(numShirts, 'quanity of shirt')
-        console.log(variantInfo, 'variant information')
-    }
+        setNumShirts(1)
+    }    
 
     return (
         <>
@@ -166,12 +158,22 @@ const ProductDetails = (props) => {
                         >
                             Please select size
                         </Label>
-                    )} 
+                    )}
+                    {inCart && (
+                        <Label
+                            className='label-sizes' 
+                            basic 
+                            color='red' 
+                        >
+                            Item Already in Cart! 
+                        </Label>
+                    )}
                 </>
             )}
             <Button 
-                onClick={addToCart}
-                fluid 
+                onClick={handleButtonAddCart}
+                // fluid 
+                className='add-cart-button'
                 size='big' 
                 color='green'
             >

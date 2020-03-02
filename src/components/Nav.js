@@ -24,6 +24,7 @@ const Nav = (props) => {
             </Sidebar>
 
             <Sidebar
+                className='cart-sidebar'
                 as={Menu}
                 direction='right'
                 animation='overlay'
@@ -35,7 +36,7 @@ const Nav = (props) => {
             >
                 <CartSidebar 
                     setCartVisible={props.setCartVisible}
-                    cartQuanity={props.cartQuanity}
+                    cart={props.cart}
                 />
             </Sidebar>
 
@@ -47,21 +48,20 @@ const Nav = (props) => {
                 />
                 <Image src={logoText} size='small'/>
 
-                {props.cartQuanity === 0 ? (
-                    <Icon 
-                    name='shopping cart' 
-                    size='large'
-                    onClick={() => props.setCartVisible(!props.cartVisible)}
-                />
-                ) : (
-                    <Label color='blue'>
+                {props.cart && props.cart.total_unique_items > 0 ? (
+                    <Label color='blue' onClick={() => props.setCartVisible(!props.cartVisible)}>
                         <Icon 
                             name='shopping cart' 
                             size='large'
-                            onClick={() => props.setCartVisible(!props.cartVisible)}
                         />
-                        {props.cartQuanity}
+                        {props.cart.total_unique_items}
                     </Label>
+                ) : (
+                    <Icon 
+                        name='shopping cart' 
+                        size='large'
+                        onClick={() => props.setCartVisible(!props.cartVisible)}
+                    />
                 )}
             </nav>
         </>
@@ -69,3 +69,5 @@ const Nav = (props) => {
 };
 
 export default Nav;
+
+
