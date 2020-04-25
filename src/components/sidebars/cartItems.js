@@ -5,7 +5,7 @@ import { CartItemsContext } from '../../App'
 
 const CartItems = (props) => {
 
-    console.log(props, 'props from sidebar for items')
+    // console.log(props, 'props from sidebar for items')
 
     const helpFnc = useContext(CartItemsContext)
 
@@ -17,7 +17,7 @@ const CartItems = (props) => {
                 <h4>{props.item.variants[0].option_name}</h4>
                 <div className='quanity-group'>
                     <Button
-                        negative 
+                        // negative 
                         className='quan-buttons' 
                         onClick={() => {
                             let newQuantity = props.item.quantity - 1
@@ -31,7 +31,7 @@ const CartItems = (props) => {
                         value={props.item.quantity} 
                     />
                     <Button
-                        positive 
+                        // positive 
                         className='quan-buttons'
                         onClick={() => {
                             let newQuanity = props.item.quantity + 1

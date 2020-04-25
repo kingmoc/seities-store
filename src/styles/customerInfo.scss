@@ -1,0 +1,48 @@
+.summary-drop {
+
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 0 20px;
+    padding-bottom: 10px;
+    margin-top: 20px;
+    background-color: #de03270f !important;
+
+    .summary-content {
+        width: 100%;
+    }
+
+    .summary-title {
+        color: red;
+        border-top: none !important;
+    }
+
+    .item-data-container {
+        display: flex !important;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 30px;
+    
+        .item-group-name-size {
+            display: flex;
+            flex-direction: column;
+    
+            h3 {
+                color: black;
+                margin: 0;
+            }
+            span {
+                color: grey; 
+            }
+        }
+    
+        h4 {
+            margin: 0
+        }
+    }
+}
+
+.paypal-box {
+    width: 90%;
+    margin: 20px auto;
+}

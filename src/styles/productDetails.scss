@@ -31,3 +31,14 @@
     display: block !important;
 }
 
+.navigate-menu {
+    display: flex;
+    justify-content: center;
+    margin: 5px 0;
+
+    .shop-link {
+        color: #005ac8ab;
+        margin-right: 10px;
+    }
+}
+

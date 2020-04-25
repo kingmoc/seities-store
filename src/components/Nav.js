@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useHistory, Link } from "react-router-dom";
 import { Image, Icon, Sidebar, Menu, Label } from 'semantic-ui-react';
 import logoText from '../img/logo-text.png'
 
@@ -9,6 +10,9 @@ const Nav = (props) => {
 
     const [visible, setVisible] = useState(false)
 
+    let history = useHistory()
+    const url = history.location.pathname
+
     return (
         <>
             <Sidebar
@@ -16,7 +20,6 @@ const Nav = (props) => {
                 animation='overlay'
                 onHide={() => setVisible(false)}
                 visible={visible}
-                inverted
                 vertical
                 borderless
             >
@@ -30,7 +33,6 @@ const Nav = (props) => {
                 animation='overlay'
                 onHide={() => props.setCartVisible(false)}
                 visible={props.cartVisible}
-                inverted
                 vertical
                 borderless
             >
@@ -41,21 +43,35 @@ const Nav = (props) => {
             </Sidebar>
 
             <nav>
-                <Icon 
-                    name='bars' 
-                    size='large'
-                    onClick={() => setVisible(!visible)}
-                />
-                <Image src={logoText} size='small'/>
+                {!url.includes('checkout') && (
+                    <Icon 
+                        name='bars' 
+                        size='large'
+                        onClick={() => setVisible(!visible)}
+                        className='hamburger'
+                    />
+                )}
+                <Link to='/'>
+                    <Image 
+                        src={logoText} 
+                        size={url.includes('checkout') ? 'medium' : 'small'}
+                    />
+                </Link>
 
                 {props.cart && props.cart.total_unique_items > 0 ? (
-                    <Label color='blue' onClick={() => props.setCartVisible(!props.cartVisible)}>
-                        <Icon 
-                            name='shopping cart' 
-                            size='large'
-                        />
-                        {props.cart.total_unique_items}
-                    </Label>
+                    !url.includes('checkout') && (
+                        <Label 
+                            color='blue' 
+                            onClick={() => props.setCartVisible(!props.cartVisible)}
+                            className='cart-icon'
+                        >
+                            <Icon 
+                                name='shopping cart' 
+                                size='large'
+                            />
+                            {props.cart.total_unique_items}
+                        </Label>
+                    )
                 ) : (
                     <Icon 
                         name='shopping cart' 

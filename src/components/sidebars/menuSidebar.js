@@ -22,6 +22,9 @@ const menuSidebar = (props) => {
             <Menu.Item as='a'>
                 Contact
             </Menu.Item>
+            <Menu.Item as='a'>
+                Cart
+            </Menu.Item>
         </>
     );
 };

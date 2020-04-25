@@ -7,6 +7,7 @@ import Nav from './components/Nav'
 import Hero from './components/Hero'
 import ProductContainer from './components/ProductContainer'
 import ProductDetails from './components/ProductDetails'
+import CustomerInfo from './components/CustomerInfo'
 
 export const CartItemsContext = React.createContext()
 
@@ -19,7 +20,7 @@ function App() {
     useEffect(() => {
         commerce.cart.retrieve()
             .then(res => {
-                console.log(res, 'response from app useEffect')
+                // console.log(res, 'response from app useEffect')
                 setCart(res)
             })
     },[])
@@ -34,7 +35,6 @@ function App() {
                 cart.line_items.map(item => {
                     if(item.id === res.line_item_id) {
                         let newQuantity = item.quantity + quantity
-                        // let newQuantity = quantity + 1
                         cartHelperFunctions.addQuantity(res.line_item_id, newQuantity)
                     }
                 })
@@ -89,6 +89,13 @@ function App() {
                         {...props}
                         setCartVisible={setCartVisible}
                         addToCart={addToCart}
+                    />
+                )
+            }}/>
+            <Route path='/checkout/:id' render={props => {
+                return (
+                    <CustomerInfo
+                        {...props}
                     />
                 )
             }}/>

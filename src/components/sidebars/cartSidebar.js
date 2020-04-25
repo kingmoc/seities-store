@@ -1,18 +1,31 @@
 import React from 'react';
-import { Icon, Header, Button, Item, List, Segment } from 'semantic-ui-react';
+import { useHistory } from "react-router-dom";
+import { Icon, Header, Button, List, Segment } from 'semantic-ui-react';
 
 import CartItems from './cartItems'
 
 const CartSidebar = (props) => {
 
-    console.log(props, 'props from cart')
+    // console.log(props, 'props from cart')
+    let history = useHistory()
+
+    const goToCheckout = e => {
+        history.push(`/checkout/${props.cart.id}`)
+        localStorage.setItem('cart-id', props.cart.id)
+        props.setCartVisible(false)
+    }
+
+    const removeIcons = () => {
+        let hamburger = document.querySelector('.hamburger')
+        console.log(hamburger, 'class selection!!!!')
+        hamburger.style.display = 'none'
+    }
 
     return (
         <>
             <div className='cart-side'>
-                <Header color='grey' size='huge'>Shopping Cart</Header>
-                <Icon 
-                    color='grey'
+                <Header inverted size='huge'>Shopping Cart</Header>
+                <Icon
                     name='x' 
                     size='big'
                     onClick={() => props.setCartVisible(false)}
@@ -43,8 +56,13 @@ const CartSidebar = (props) => {
             )}
             {props.cart && props.cart.total_items && (
                 <>
-                    <Header size='small' textAlign='center' color='red'>Shipping and Taxes calculated at checkout</Header>
-                    <Button inverted color='green' size='huge' className='cart-button'>
+                    <Header size='small' textAlign='center' color='red'>Shipping calculated at checkout</Header>
+                    <Button 
+                        color='green' 
+                        size='huge' 
+                        className='cart-button'
+                        onClick={goToCheckout}
+                    >
                         Checkout
                         <Icon name='arrow right' />
                     </Button>

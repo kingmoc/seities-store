@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom'
 import Commerce from '@chec/commerce.js'
 import ImageGallery from 'react-image-gallery';
 import { Header, Button, Dropdown, Label } from 'semantic-ui-react';
@@ -43,6 +44,8 @@ const ProductDetails = (props) => {
         if(product.length !== 0) {
 
             product.assets.forEach((asset) => {
+
+                // console.log(asset, 'asset from forEeach')
 
                 if(asset.data.ext === 'png') {
                     gallery = [...gallery, {
@@ -116,7 +119,11 @@ const ProductDetails = (props) => {
     }    
 
     return (
-        <>
+        <>  
+            <section className='navigate-menu'>
+                <Link className='shop-link' to='/'>Shop /</Link>
+                <p to='/'>{product.name}</p>
+            </section>
             <ImageGallery items={images} showFullscreenButton={false} showPlayButton={false} />
             <Header>{product.name}</Header>
             {product.length !==0 && (
