@@ -65,7 +65,7 @@ const CustomerInfo = (props) => {
             // console.log(loaded, 'value for boolean loaded')
             window.paypal.Buttons({
                 createOrder: (data, actions) => {
-                    // console.log(data, 'data from paypal')
+                    // console.log(data, 'data from paypal createOrder Function')
                     return actions.order.create({
                         purchase_units: [
                             {
@@ -86,6 +86,13 @@ const CustomerInfo = (props) => {
                         ]
                     })
                 },
+                onShippingChange: (data, actions) => {
+                    if (data.shipping_address.country_code !== 'US') {
+                        return actions.reject();
+                    }
+            
+                    return actions.resolve();
+                },
                 onApprove: async (data, actions) => {
                     const order = await actions.order.capture()
 
@@ -105,7 +112,7 @@ const CustomerInfo = (props) => {
                     }
 
                     final.shipping = {
-                        name: `${order.payer.name.given_name} ${order.payer.name.surname}`,
+                        name: order.purchase_units[0].shipping.name.full_name,
                         street: order.purchase_units[0].shipping.address.address_line_1,
                         town_city: order.purchase_units[0].shipping.address.admin_area_2,
                         county_state: order.purchase_units[0].shipping.address.admin_area_1,
@@ -129,7 +136,7 @@ const CustomerInfo = (props) => {
                         }
                     }
 
-                    // console.log(order, 'order from paypal capture')
+                    console.log(order, 'order from paypal capture')
                     console.log(final, 'final for capture')
 
                     commerce.checkout.capture(tokenId, final)
