@@ -16,6 +16,7 @@ function App() {
 
     const [cartVisible, setCartVisible] = useState(false)
     const [cart, setCart] = useState()
+    const [receipt, setReceipt] = useState()
 
     useEffect(() => {
         commerce.cart.retrieve()
@@ -23,7 +24,7 @@ function App() {
                 // console.log(res, 'response from app useEffect')
                 setCart(res)
             })
-    },[])
+    },[receipt])
     
     
     const addToCart = (productId, quantity, variantInfo) => {
@@ -96,6 +97,9 @@ function App() {
                 return (
                     <CustomerInfo
                         {...props}
+                        setCartVisible={setCartVisible}
+                        setReceipt={setReceipt}
+                        receipt={receipt}
                     />
                 )
             }}/>

@@ -7,6 +7,7 @@ import CartItems from './cartItems'
 const CartSidebar = (props) => {
 
     // console.log(props, 'props from cart')
+
     let history = useHistory()
 
     const goToCheckout = e => {
@@ -15,23 +16,22 @@ const CartSidebar = (props) => {
         props.setCartVisible(false)
     }
 
-    const removeIcons = () => {
-        let hamburger = document.querySelector('.hamburger')
-        console.log(hamburger, 'class selection!!!!')
-        hamburger.style.display = 'none'
-    }
+    // const removeIcons = () => {
+    //     let hamburger = document.querySelector('.hamburger')
+    //     console.log(hamburger, 'class selection!!!!')
+    //     hamburger.style.display = 'none'
+    // }
 
     return (
         <>
             <div className='cart-side'>
-                <Header inverted size='huge'>Shopping Cart</Header>
+                <Header size='huge'>Shopping Cart</Header>
                 <Icon
                     name='x' 
                     size='big'
                     onClick={() => props.setCartVisible(false)}
                 />
             </div>
-
             {props.cart && props.cart.total_unique_items > 0 && (
                 <List inverted>
                    {props.cart.line_items.map(item => (
@@ -40,8 +40,7 @@ const CartSidebar = (props) => {
                        </List.Item>
                    ))}
                 </List>
-            )} 
-
+            )}
             <div className='cart-total'>
                 <h2>Subtotal</h2>
                 <h2>{props.cart && props.cart.subtotal.formatted_with_symbol}</h2>
@@ -50,11 +49,11 @@ const CartSidebar = (props) => {
                 <Segment className='empty-cart-segment' secondary>
                     <Header>Your Cart is currently Empty</Header>
                     <p>
-                        It would make you very happy if you added an item to the cart
+                        It would make you very happy if you added an item to the cart!
                     </p>
                 </Segment>
             )}
-            {props.cart && props.cart.total_items && (
+            {props.cart && props.cart.total_items > 0 && (
                 <>
                     <Header size='small' textAlign='center' color='red'>Shipping calculated at checkout</Header>
                     <Button 
@@ -67,7 +66,7 @@ const CartSidebar = (props) => {
                         <Icon name='arrow right' />
                     </Button>
                 </>
-            )}
+            )} 
         </>
     ); 
 };

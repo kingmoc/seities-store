@@ -10,6 +10,12 @@
 
     .summary-content {
         width: 100%;
+
+        .shipping-message {
+            color:red;
+            font-style: italic;
+            text-align: center;
+        }
     }
 
     .summary-title {
@@ -45,4 +51,28 @@
 .paypal-box {
     width: 90%;
     margin: 20px auto;
+}
+
+// .paypal-box:nth-child(1) {
+//     border: 1px solid red;
+// }
+
+.discount-code {
+    display: flex;
+    justify-content: center;
+}
+
+.cart-totals {
+    display: flex;
+    flex-direction: column;
+
+    section {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+    }
+
+    .freeshipping {
+        color: #4c8806;
+    }
 }
