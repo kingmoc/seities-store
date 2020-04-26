@@ -42,7 +42,7 @@ const Nav = (props) => {
                 />
             </Sidebar>
 
-            <nav>
+            <nav style={url.includes('checkout') ? {justifyContent: 'center'} : null}>
                 {!url.includes('checkout') && (
                     <Icon 
                         name='bars' 
@@ -51,34 +51,53 @@ const Nav = (props) => {
                         className='hamburger'
                     />
                 )}
-                <Link to='/'>
-                    <Image 
-                        src={logoText} 
-                        size={url.includes('checkout') ? 'medium' : 'small'}
-                    />
-                </Link>
 
-                {props.cart && props.cart.total_unique_items > 0 ? (
-                    !url.includes('checkout') && (
-                        <Label 
-                            color='blue' 
+                <div className='nav-group-1'>
+                    <Link to='/'>
+                        <Image 
+                            src={logoText} 
+                            size={url.includes('checkout') ? 'medium' : 'small'}
+                        />
+                    </Link>
+
+                    {!url.includes('checkout') && (
+                        <ul>
+                            <li><Link to='#'>Gallery</Link></li>
+                            <li><Link to='#'>The Story</Link></li>
+                        </ul>
+                    )}
+                </div>
+
+                <div className='nav-group-2'>
+                    {!url.includes('checkout') && (
+                        <ul>
+                            <li><Link to='#'>FAQ</Link></li>
+                            <li><Link to='#'>Contact</Link></li>
+                        </ul>
+                    )}
+
+                    {props.cart && props.cart.total_unique_items > 0 ? (
+                        !url.includes('checkout') && (
+                            <Label 
+                                color='blue' 
+                                onClick={() => props.setCartVisible(!props.cartVisible)}
+                                className='cart-icon'
+                            >
+                                <Icon 
+                                    name='shopping cart' 
+                                    size='large'
+                                />
+                                {props.cart.total_unique_items}
+                            </Label>
+                        )
+                    ) : (
+                        <Icon 
+                            name='shopping cart' 
+                            size='large'
                             onClick={() => props.setCartVisible(!props.cartVisible)}
-                            className='cart-icon'
-                        >
-                            <Icon 
-                                name='shopping cart' 
-                                size='large'
-                            />
-                            {props.cart.total_unique_items}
-                        </Label>
-                    )
-                ) : (
-                    <Icon 
-                        name='shopping cart' 
-                        size='large'
-                        onClick={() => props.setCartVisible(!props.cartVisible)}
-                    />
-                )}
+                        />
+                    )}
+                </div>
             </nav>
         </>
     );

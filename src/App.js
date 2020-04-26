@@ -8,6 +8,7 @@ import Hero from './components/Hero'
 import ProductContainer from './components/ProductContainer'
 import ProductDetails from './components/ProductDetails'
 import CustomerInfo from './components/CustomerInfo'
+import Footer from './components/Footer'
 
 export const CartItemsContext = React.createContext()
 
@@ -103,6 +104,7 @@ function App() {
                     />
                 )
             }}/>
+            <Footer />
         </div>
     );
 }

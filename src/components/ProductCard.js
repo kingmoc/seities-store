@@ -13,10 +13,12 @@ const ProductCard = ({product}) => {
 
     return (
         <Card className='product-card'>
-            <Image src={product.media.source} />
-            <Card.Header>{product.name}</Card.Header>
-            <Card.Meta>{product.price.formatted_with_symbol}</Card.Meta>
-            <Button color='black' size='big' onClick={goToDetails}>View Details</Button>
+            <Image 
+                src={product.media.source}
+                onClick={goToDetails} 
+            />
+            <Card.Header className='product-title'>{product.name}</Card.Header>
+            <Card.Meta className='product-meta'>{product.price.formatted_with_symbol}</Card.Meta>
         </Card>
     );
 };
