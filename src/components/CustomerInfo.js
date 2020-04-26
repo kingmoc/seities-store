@@ -51,7 +51,8 @@ const CustomerInfo = (props) => {
 
         /* *** Loading Paypal Script *** */
         const script = document.createElement('script')
-        script.src = `https://www.paypal.com/sdk/js?client-id=${process.env.REACT_APP_PAYPAL_SANDBOX}&disable-funding=credit`
+        // script.src = `https://www.paypal.com/sdk/js?client-id=${process.env.REACT_APP_PAYPAL_SANDBOX}&disable-funding=credit`
+        script.src = `https://www.paypal.com/sdk/js?client-id=${process.env.REACT_APP_PAYPAL_LIVE}&disable-funding=credit`
         script.addEventListener('load', () => setLoaded(true))
         document.body.appendChild(script)
     },[props.receipt])
@@ -192,54 +193,6 @@ const CustomerInfo = (props) => {
         setActiveIndex(newIndex)
     }
 
-    const paypalCapture = e => {
-        e.preventDefault()
-
-        let final = {}
-
-        final.line_items = lineItemsParse()
-
-        final.fulfillment = {
-            shipping_method: "ship_Op1YoVPxglXLv9"
-        }
-
-        // final.shipping = {
-        //     // name: `${data.firstname} ${data.lastname}`,
-        //     // street: data.street,
-        //     // town_city: data.town_city,
-        //     // county_state: data.county_state,
-        //     // postal_zip_code: data.postal_zip_code,
-        //     country: 'US'   
-        // }
-
-        final.payment = {
-            gateway: "paypal"
-            // card: {
-            //     number: data.number,
-            //     expiry_month: data.expiry_month,
-            //     expiry_year: data.expiry_year,
-            //     cvc: data.cvc,
-            //     postal_zip_code: data.postal_billing_zip_code,
-            // }
-        }
-
-        // console.log(final, 'final for capture')
-
-        commerce.checkout.capture(tokenId, final)
-            .then(res => {
-                    console.log(res, 'res from CAPTURING CHECKOUT!!!')
-                    // props.setReceipt(res)
-                    // localStorage.removeItem('cart-id')
-                    // history.push(`/order-complete/${props.tokenId}/${res.id}`)
-                    // setProcessing(false)
-            })
-            .catch(err => {
-                    window.alert(err.data.error.message)
-                    // setProcessing(false)
-            })
-
-    }
-
     const handleDiscountCode = (e, {value}) => {
         /* Putting Discount Code in State */
         setDiscountCode(value)
@@ -298,6 +251,7 @@ const CustomerInfo = (props) => {
                     </Accordion.Title>
                     <Accordion.Content 
                         active={activeIndex === 0}
+                        className='active-container'
                     >
                         {liveObject && liveObject.line_items.map(item => (
                             <Container className='item-data-container' key={item.id}>

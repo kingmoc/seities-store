@@ -9,12 +9,16 @@
     background-color: #de03270f !important;
 
     .summary-content {
-        width: 100%;
+        width: 85%;
 
         .shipping-message {
             color:red;
             font-style: italic;
             text-align: center;
+        }
+
+        .active-container {
+            width: 119%;
         }
     }
 
