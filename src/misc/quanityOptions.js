@@ -23,5 +23,30 @@ export const numOfShirts = [
         key: '5',
         text: '5',
         value: 5,
-    }
+    },
+    {
+        key: '6',
+        text: '6',
+        value: 6,
+    },
+    {
+        key: '7',
+        text: '7',
+        value: 7,
+    },
+    {
+        key: '8',
+        text: '8',
+        value: 8,
+    },
+    {
+        key: '9',
+        text: '9',
+        value: 9,
+    },
+    {
+        key: '10',
+        text: '10',
+        value: 10,
+    },
 ]

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useHistory } from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
 import { Message, Image, Menu } from 'semantic-ui-react';
 
 // Img Import
@@ -55,12 +55,14 @@ const Footer = () => {
                     <p>© Seities Apparel 2020</p>
                     <p>All images and content may not be used without permission</p>
                 </div>
-                <Image 
-                    className='footer-image'
-                    src={logoTrans} 
-                    size='small' 
-                    centered
-                />
+                <Link to='/'>
+                    <Image 
+                        className='footer-image'
+                        src={logoTrans} 
+                        size='small' 
+                        centered
+                    />
+                </Link>
             </section>
         </Message>
     );

@@ -2,9 +2,17 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom'
 import Commerce from '@chec/commerce.js'
 import ImageGallery from 'react-image-gallery';
-import { Header, Button, Dropdown, Label } from 'semantic-ui-react';
+import { Header, Button, Dropdown, Label, Container, Message, Divider, Menu, Image } from 'semantic-ui-react';
 
 import {numOfShirts} from '../misc/quanityOptions'
+
+// Image Imports
+import imgSizeBlue from '../img/sizing-blue.png'
+import imgSizeGreen from '../img/sizing-green.png'
+import gif from '../img/seities.gif'
+import pic1 from '../img/seities1.png'
+import picGirl from '../img/seities2-girl.JPG'
+import picBoth from '../img/seities3-both.JPG'
 
 const ProductDetails = (props) => {
 
@@ -17,13 +25,14 @@ const ProductDetails = (props) => {
     const [images, setImages] = useState([])
     const [numShirts, setNumShirts] = useState(1)    
     const [inCart, setInCart] = useState(false)
+    const [activeItem, setActiveItem] = useState('details')
 
     let productId = props.match.params.id
 
     useEffect(() => {
         commerce.products.retrieve(productId)
           .then(res => {
-            console.log(res, 'data from call')
+            console.log(res, 'data from retreive products ...')
             setProduct(res)
           })
           .catch(err => console.log(err))
@@ -116,7 +125,11 @@ const ProductDetails = (props) => {
             setVariantInfo(false)
         }
         setNumShirts(1)
-    }    
+    } 
+    
+    const handleTabs = (e, {name}) => {
+        setActiveItem(name)
+    }
 
     return (
         <>  
@@ -125,67 +138,156 @@ const ProductDetails = (props) => {
                 <p to='/'>{product.name}</p>
             </section>
             <ImageGallery items={images} showFullscreenButton={false} showPlayButton={false} />
-            <Header>{product.name}</Header>
-            {product.length !==0 && (
-                <>
-                    <div className='price-quanity'>
-                        <Dropdown
-                            className="quanity-drop"
-                            onChange={getQuanity}
-                            value={numShirts} 
-                            fluid
-                            placeholder='How Many' 
-                            selection
-                            options={numOfShirts}
-                        />
-                        <Header>{product.price.formatted_with_symbol}</Header>
-                    </div>
+            <Container>
+                <Header textAlign='center'>{product.name}</Header>
+                {product.length !==0 && (
+                    <>
+                        <div className='price-quanity'>
+                            <Dropdown
+                                className="quanity-drop"
+                                onChange={getQuanity}
+                                value={numShirts} 
+                                fluid
+                                placeholder='How Many' 
+                                selection
+                                options={numOfShirts}
+                            />
+                            <Header>{product.price.formatted_with_symbol}</Header>
+                        </div>
 
-                    <div className='all-btn-sizes'>
-                        {product.variants[0].options.map(size => {
-                            return(
-                                <Button 
-                                    className='button-sizes'
-                                    basic 
-                                    key={size.id}
-                                    onClick={handleVariantInfo}
-                                    value={size.id}
-                                    id={product.variants[0].id}
-                                >
-                                    {size.name}
-                                </Button>
-                            )
-                        })}
-                    </div>
-                    {!variantInfo && (
-                        <Label
-                            className='label-sizes' 
-                            basic 
-                            color='red' 
-                        >
-                            Please select size
-                        </Label>
-                    )}
-                    {inCart && (
-                        <Label
-                            className='label-sizes' 
-                            basic 
-                            color='red' 
-                        >
-                            Item Already in Cart! 
-                        </Label>
-                    )}
-                </>
-            )}
-            <Button 
-                onClick={handleButtonAddCart}
-                // fluid 
-                className='add-cart-button'
-                size='big' 
-                color='green'
-            >
-                Add to Cart
-            </Button>
+                        <div className='all-btn-sizes'>
+                            {product.variants[0].options.map(size => {
+                                return(
+                                    <Button 
+                                        className='button-sizes'
+                                        basic 
+                                        key={size.id}
+                                        onClick={handleVariantInfo}
+                                        value={size.id}
+                                        id={product.variants[0].id}
+                                    >
+                                        {size.name}
+                                    </Button>
+                                )
+                            })}
+                        </div>
+                        {!variantInfo && (
+                            <Label
+                                className='label-sizes' 
+                                basic 
+                                color='red' 
+                            >
+                                Please select size
+                            </Label>
+                        )}
+                        {inCart && (
+                            <Label
+                                className='label-sizes' 
+                                basic 
+                                color='red' 
+                            >
+                                Item Already in Cart! 
+                            </Label>
+                        )}
+                    </>
+                )}
+                <Button 
+                    onClick={handleButtonAddCart}
+                    // fluid 
+                    className='add-cart-button'
+                    size='big' 
+                    color='green'
+                >
+                    Add to Cart
+                </Button>
+                <p>
+                    Seities frees you to be yourself: a little bit weird, a little bit subversive, and with a 
+                    whole world of choice. These are designs that are infinitely wearable and created to inject humour, 
+                    unusual little details, and plenty of fun into your wardrobe. 
+                </p>
+                <Divider />
+                <Menu pointing secondary fluid widths={3}>
+                    <Menu.Item
+                        name='details'
+                        active={activeItem === 'details'}
+                        onClick={handleTabs}
+                    />
+                    <Menu.Item
+                        name='sizing'
+                        active={activeItem === 'sizing'}
+                        onClick={handleTabs}
+                    />
+                    <Menu.Item
+                        name='shipping'
+                        active={activeItem === 'shipping'}
+                        onClick={handleTabs}
+                    />
+                </Menu>
+                {activeItem === 'details' && (
+                    <>
+                        <ul>
+                            <li>100% Organic Cotton</li>
+                            <li>Earth Friendly Inks & Dyes</li>
+                            <li>Uniquely Designed</li>
+                            <li>Minimalist Style for Any Occassion</li>
+                        </ul>
+                    </>
+                )}
+                {activeItem === 'sizing' && (
+                    <>
+                        <Image src={imgSizeGreen}/>
+                        <Image src={imgSizeBlue}/>
+                    </>
+                )}                
+                {activeItem === 'shipping' && (
+                    <>
+                        <p>
+                            Currently we only provide shipping to the United States &#128532;
+                        </p>
+                        <p>
+                            Shipping cost will be a flat rate: <strong>$4.50</strong>  
+                        </p>
+                        <p>
+                            If you want to make a bulk 
+                            order (10 or more) - please contact us to arrange shipping.
+                        </p>
+                        <p>
+                            We want you to be 100% satisfied with your Seities Apparel purchase. 
+                            Items can be returned or exchanged within 30 days of delivery.
+                        </p>
+                    </>
+                )}
+                <Message className='back-story'>
+                    <Container>
+                    <Message.Header>Back Story</Message.Header>
+                        <p>
+                            Seities was established to bring discrete character to versatile tees.
+                        </p>
+                        <p>
+                            All of the Seities designs are short run, meaning that each highly 
+                            desirable design is limited: when you choose a Seities tee you’re unlikely 
+                            to see anyone else wearing the same style as you.
+                        </p>
+                        <Link to='#'>Read More ...</Link>
+                    </Container>
+                </Message>
+                <Header textAlign='center'>What is your Seities ...?</Header>
+                <div className='pics-bottom'>
+                    <Image src={gif} />
+                    <Image src={picGirl} />
+                    <Image src={pic1} />
+                    <Image src={picBoth} />
+                </div>
+                <Header textAlign='center'>Ready to Show Yourself!</Header>
+                <Button 
+                    onClick={handleButtonAddCart}
+                    className='add-cart-button fade-in'
+                    size='big' 
+                    color='green'
+                >
+                    Add to Cart
+                </Button>
+            </Container>
         </>
     );      
 };
