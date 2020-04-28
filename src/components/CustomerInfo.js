@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { useHistory } from "react-router-dom";
 import { Link } from "react-router-dom";
 import Commerce from '@chec/commerce.js'
-import { Accordion, Icon, Header, Container, Button, Divider, Input } from 'semantic-ui-react';
+import { Accordion, Icon, Header, Container, Button, Divider, Input, Loader } from 'semantic-ui-react';
 
 // Component Import
 import CheckoutItems from './CheckoutItems'
@@ -20,6 +20,7 @@ const CustomerInfo = (props) => {
     const [discountCode, setDiscountCode] = useState()
     const [noDiscountCode, setNoDiscountCode] = useState()
     const [invalidDiscountCode, setInvalidDiscountCode] = useState()
+    const [processing, setProcessing] = useState(false)
 
     let cartId = props.match.params.id
 
@@ -51,8 +52,8 @@ const CustomerInfo = (props) => {
 
         /* *** Loading Paypal Script *** */
         const script = document.createElement('script')
-        // script.src = `https://www.paypal.com/sdk/js?client-id=${process.env.REACT_APP_PAYPAL_SANDBOX}&disable-funding=credit`
-        script.src = `https://www.paypal.com/sdk/js?client-id=${process.env.REACT_APP_PAYPAL_LIVE}&disable-funding=credit`
+        script.src = `https://www.paypal.com/sdk/js?client-id=${process.env.REACT_APP_PAYPAL_SANDBOX}&disable-funding=credit`
+        // script.src = `https://www.paypal.com/sdk/js?client-id=${process.env.REACT_APP_PAYPAL_LIVE}&disable-funding=credit`
         script.addEventListener('load', () => setLoaded(true))
         document.body.appendChild(script)
     },[props.receipt])
@@ -94,6 +95,8 @@ const CustomerInfo = (props) => {
                     return actions.resolve();
                 },
                 onApprove: async (data, actions) => {
+                    setProcessing(true)
+                    
                     const order = await actions.order.capture()
 
                     setPaidFor(true)
@@ -122,11 +125,6 @@ const CustomerInfo = (props) => {
 
                     final.payment = {
                         gateway: "test_gateway",
-                        // paypal: {
-                        //     action: "capture",
-                        //     payment_id: order.purchase_units[0].payments.captures[0].id,
-                        //     payer_id: order.id
-                        // }
                         card: {
                             number: "4242424242424242",
                             expiry_month: "02",
@@ -143,9 +141,9 @@ const CustomerInfo = (props) => {
                         .then(res => {
                                 console.log(res, 'res from CAPTURING CHECKOUT!!!')
                                 props.setReceipt(res)
+                                setProcessing(false)
                                 // localStorage.removeItem('cart-id')
                                 // history.push(`/order-complete/${props.tokenId}/${res.id}`)
-                                // setProcessing(false)
                         })
                         .catch(err => {
                                 window.alert(err.data.error.message)
@@ -266,16 +264,20 @@ const CustomerInfo = (props) => {
                             </Container>
                         ))}
                         <Container>
-                            <Divider horizontal>Discount Code</Divider>
+                            {!paidFor && (
+                                <>
+                                    <Divider horizontal>Discount Code</Divider>
 
-                            <form className='discount-code' onSubmit={handleDiscountClick}>
-                                <Input size='large' onChange={handleDiscountCode} />
-                                <Button color='black'>Apply</Button>     
-                            </form>
+                                    <form className='discount-code' onSubmit={handleDiscountClick}>
+                                        <Input size='large' onChange={handleDiscountCode} />
+                                        <Button color='black'>Apply</Button>     
+                                    </form>
+                                </>
+                            )}
                             {noDiscountCode && <p>No Discount Code Entered</p>}
                             {invalidDiscountCode && <p>Invalid Code!</p>}
                             <Divider horizontal>Cart Totals</Divider>
-                            <p className='shipping-message'>Currently we only ship to United States with a flat rate of $4.50</p>
+                            {!paidFor && <p className='shipping-message'>Currently we only ship to United States with a flat rate of $4.50</p>}
                             {liveObject && (
                                 <div className='cart-totals'>
                                     <section>
@@ -305,10 +307,17 @@ const CustomerInfo = (props) => {
             </Accordion>
 
             {paidFor ? (
-                <Header>Congrats on a succesffully payment!</Header>
+                <>
+                    <Loader active={processing} inline='centered' size='large'/>
+                    <div className='paid-complete'>
+                        <Icon name='check circle outline' />
+                        <Header>{liveObject.total.formatted_with_symbol}</Header>
+                        <Header>Paid</Header>
+                    </div>
+                </>
             ) : (
                 <>
-                    <div className='paypal-box' ref={v => paypalRef = v} />
+                    <Container><div className='paypal-box' ref={v => paypalRef = v} /></Container>
                     <Header textAlign='center' onClick={goToCart}>
                         <Icon name='pointing left' />
                         Return to Cart

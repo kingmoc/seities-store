@@ -36,6 +36,8 @@ const ProductDetails = (props) => {
             setProduct(res)
           })
           .catch(err => console.log(err))
+
+        localStorage.removeItem('cart-id')
         
         // commerce.cart.contents()
         // .then(res => {
@@ -241,20 +243,22 @@ const ProductDetails = (props) => {
                 )}                
                 {activeItem === 'shipping' && (
                     <>
-                        <p>
-                            Currently we only provide shipping to the United States &#128532;
-                        </p>
-                        <p>
-                            Shipping cost will be a flat rate: <strong>$4.50</strong>  
-                        </p>
-                        <p>
-                            If you want to make a bulk 
-                            order (10 or more) - please contact us to arrange shipping.
-                        </p>
-                        <p>
-                            We want you to be 100% satisfied with your Seities Apparel purchase. 
-                            Items can be returned or exchanged within 30 days of delivery.
-                        </p>
+                        <Container>
+                            <p>
+                                Currently we only provide shipping to the United States &#128532;
+                            </p>
+                            <p>
+                                Shipping cost will be a flat rate: <strong>$4.50</strong>  
+                            </p>
+                            <p>
+                                If you want to make a bulk 
+                                order (10 or more) - please contact us to arrange shipping.
+                            </p>
+                            <p>
+                                We want you to be 100% satisfied with your Seities Apparel purchase. 
+                                Items can be returned or exchanged within 30 days of delivery.
+                            </p>
+                        </Container>
                     </>
                 )}
                 <Message className='back-story'>
@@ -279,6 +283,24 @@ const ProductDetails = (props) => {
                     <Image src={picBoth} />
                 </div>
                 <Header textAlign='center'>Ready to Show Yourself!</Header>
+                {product.length !==0 && (
+                    <div className='all-btn-sizes'>
+                    {product.variants[0].options.map(size => {
+                        return(
+                            <Button 
+                                className='button-sizes'
+                                basic 
+                                key={size.id}
+                                onClick={handleVariantInfo}
+                                value={size.id}
+                                id={product.variants[0].id}
+                            >
+                                {size.name}
+                            </Button>
+                            )
+                        })}
+                    </div>
+                )}
                 <Button 
                     onClick={handleButtonAddCart}
                     className='add-cart-button fade-in'

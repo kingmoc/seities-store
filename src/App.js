@@ -10,6 +10,9 @@ import ProductDetails from './components/ProductDetails'
 import CustomerInfo from './components/CustomerInfo'
 import Footer from './components/Footer'
 
+// Private Route Import
+import PrivateRoute from './utils/PrivateRoute'
+
 export const CartItemsContext = React.createContext()
 
 function App() {
@@ -25,6 +28,9 @@ function App() {
                 // console.log(res, 'response from app useEffect')
                 setCart(res)
             })
+
+        localStorage.removeItem('cart-id')
+        
     },[receipt])
     
     
@@ -94,7 +100,7 @@ function App() {
                     />
                 )
             }}/>
-            <Route path='/checkout/:id' render={props => {
+            {/* <Route path='/checkout/:id' render={props => {
                 return (
                     <CustomerInfo
                         {...props}
@@ -103,7 +109,14 @@ function App() {
                         receipt={receipt}
                     />
                 )
-            }}/>
+            }}/> */}
+            <PrivateRoute 
+                component={CustomerInfo}
+                path='/checkout/:id'
+                setCartVisible={setCartVisible}
+                setReceipt={setReceipt}
+                receipt={receipt}
+            />
             <Footer />
         </div>
     );
