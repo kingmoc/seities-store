@@ -7,12 +7,12 @@ const PrivateRoute = ({ component: Component, ...rest }) => {
 
 	return <Route {...rest} render={(props) => {
 
-		// if(localStorage.getItem('cart-id')) {
-		// 	return <Component {...props} {...rest}/>
-		// } else {
-		// 	return <Redirect to="/" />
-		// }
-		return <Component {...props} {...rest}/>
+		if(localStorage.getItem('cart-id')) {
+			return <Component {...props} {...rest}/>
+		} else {
+			return <Redirect to="/" />
+		}
+		// return <Component {...props} {...rest}/>
 
 	}} />
 }

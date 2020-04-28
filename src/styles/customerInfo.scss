@@ -82,7 +82,52 @@
     }
 }
 
-.paid-complete {
-    color: red;
-    display: flex;
+.payment-complete {
+
+    .top-items {
+        color: #717171;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: 20px;
+
+        p {
+            color: #848282;
+            margin: 0;
+            margin-right: 4px;
+            font-size: 2rem;
+        }
+    }
+
+    span {
+        color: #2196F3;
+    }
+
+    p:nth-child(3) {
+        padding: 20px;
+        text-align: center;
+        font-size: 1.1rem;
+    
+    }
+
+    p:nth-child(4) {
+        color: #ff5722;
+        background-color: beige;
+        padding: 20px;
+        line-height: 1.5;
+        border-radius: 10px;
+        font-size: 1.1rem;
+    }
+}
+
+.payment-loader {
+    margin: 0 auto;
+    z-index: 2;
+    position: absolute !important;
+    top: 80%;
+    left: 40%;
+}
+
+.loader-box {
+    height: 200px;
 }

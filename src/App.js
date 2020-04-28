@@ -29,8 +29,8 @@ function App() {
                 setCart(res)
             })
 
-        localStorage.removeItem('cart-id')
-        
+        // localStorage.removeItem('cart-id')
+
     },[receipt])
     
     

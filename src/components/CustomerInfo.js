@@ -2,10 +2,13 @@ import React, { useState, useEffect, useRef } from 'react';
 import { useHistory } from "react-router-dom";
 import { Link } from "react-router-dom";
 import Commerce from '@chec/commerce.js'
-import { Accordion, Icon, Header, Container, Button, Divider, Input, Loader } from 'semantic-ui-react';
+import { Accordion, Icon, Header, Container, Button, Divider, Input, Loader, Image } from 'semantic-ui-react';
 
 // Component Import
 import CheckoutItems from './CheckoutItems'
+
+//Image Import
+import gif from '../img/loader.gif'
 
 const CustomerInfo = (props) => {
     console.log(props, 'props from Customer Info')
@@ -21,6 +24,7 @@ const CustomerInfo = (props) => {
     const [noDiscountCode, setNoDiscountCode] = useState()
     const [invalidDiscountCode, setInvalidDiscountCode] = useState()
     const [processing, setProcessing] = useState(false)
+    const [email, setEmail] = useState()
 
     let cartId = props.match.params.id
 
@@ -67,6 +71,7 @@ const CustomerInfo = (props) => {
             window.paypal.Buttons({
                 createOrder: (data, actions) => {
                     // console.log(data, 'data from paypal createOrder Function')
+                    // setProcessing(true)
                     return actions.order.create({
                         purchase_units: [
                             {
@@ -96,10 +101,15 @@ const CustomerInfo = (props) => {
                 },
                 onApprove: async (data, actions) => {
                     setProcessing(true)
+                    // setPaidFor(true)
+                    // setPaidFor(true)
+                    console.log("Right before await call!!!!")
                     
                     const order = await actions.order.capture()
 
                     setPaidFor(true)
+                    setEmail(order.payer.email_address)
+
                     let final = {}
 
                     final.line_items = lineItemsParse()
@@ -141,7 +151,9 @@ const CustomerInfo = (props) => {
                         .then(res => {
                                 console.log(res, 'res from CAPTURING CHECKOUT!!!')
                                 props.setReceipt(res)
+                                // setPaidFor(true)
                                 setProcessing(false)
+                                // setEmail(res.customer.email)
                                 // localStorage.removeItem('cart-id')
                                 // history.push(`/order-complete/${props.tokenId}/${res.id}`)
                         })
@@ -305,15 +317,41 @@ const CustomerInfo = (props) => {
                 </div>
                 {liveObject && <Header>{liveObject.total.formatted_with_symbol}</Header>}
             </Accordion>
-
+            {/* {true && (
+                <>
+                    <div className='loader-box'></div>
+                    <Image size='tiny' className='payment-loader' src={gif} />
+                </>
+            )} */}
             {paidFor ? (
                 <>
-                    <Loader active={processing} inline='centered' size='large'/>
-                    <div className='paid-complete'>
-                        <Icon name='check circle outline' />
-                        <Header>{liveObject.total.formatted_with_symbol}</Header>
-                        <Header>Paid</Header>
-                    </div>
+                    {processing && (
+                        <>
+                            <div className='loader-box'></div>
+                            <Image size='tiny' className='payment-loader' src={gif} />
+                        </>
+                    )}
+                    {!processing && (
+                        <>
+                            <Container className='payment-complete'>
+                                <div className='top-items'>
+                                    <Icon name='check circle outline' size='huge' color='green'/>
+                                    <p>{liveObject.total.formatted_with_symbol}</p>
+                                    <p>Paid</p>
+                                </div>
+                                <iframe src="https://giphy.com/embed/3osxYdXvsGw6wT5lIY" frameBorder="0" class="giphy-embed" width="100%" height="315"></iframe>
+                                <p>
+                                    A copy of your receipt has been emailed to <span>{email && email}</span>
+                                </p>
+                                <p>
+                                    Thanks for supporting all efforts in helping the 
+                                    Tullahoma Daycare Center! You can check out the latest news and
+                                    events here: <a href="http://tullahomadaycare.com/">tullahomadaycare.com</a>
+                                </p>
+                                <Link to='/'><Button primary size='big' fluid>Shop Again</Button></Link>
+                            </Container>
+                        </>
+                    )}
                 </>
             ) : (
                 <>

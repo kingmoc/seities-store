@@ -37,7 +37,7 @@ const ProductDetails = (props) => {
           })
           .catch(err => console.log(err))
 
-        localStorage.removeItem('cart-id')
+        // localStorage.removeItem('cart-id')
         
         // commerce.cart.contents()
         // .then(res => {
