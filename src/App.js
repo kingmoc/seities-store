@@ -117,7 +117,7 @@ function App() {
                 setReceipt={setReceipt}
                 receipt={receipt}
             />
-            <Footer />
+            <Footer setCartVisible={setCartVisible} />
         </div>
     );
 }

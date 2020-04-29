@@ -325,7 +325,7 @@ const CustomerInfo = (props) => {
             )} */}
             {paidFor ? (
                 <>
-                    {processing && (
+                    {true && (
                         <>
                             <div className='loader-box'></div>
                             <Image size='tiny' className='payment-loader' src={gif} />

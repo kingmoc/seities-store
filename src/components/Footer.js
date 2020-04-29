@@ -5,20 +5,25 @@ import { Message, Image, Menu } from 'semantic-ui-react';
 // Img Import
 import logoTrans from '../img/logo.png'
 
-const Footer = () => {
+const Footer = (props) => {
 
     const [activeItem, setActiveItem] = useState()
 
     let history = useHistory()
 
     const handleItemClick = (e, {name}) => {
+
+        if (name === 'Cart') {
+            props.setCartVisible(true)
+        }
+
         setActiveItem(name)
     }
 
     return (
         <Message color='black' className='footer'>
-            <Menu vertical color='green' inverted className='footer-links'>
-                <Menu.Item>
+            <Menu vertical inverted className='footer-links'>
+                <Menu.Item className='links-menu'>
                     <Menu.Header>Important Links</Menu.Header>
 
                     <Menu.Menu>

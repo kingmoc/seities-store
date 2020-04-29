@@ -13,7 +13,13 @@
 
     .footer-links { 
         margin: 15px auto !important;
-        background-color: #005ac8 !important;
+        // background-color: #005ac8 !important;
+
+        .links-menu {
+            display: flex !important;
+            flex-direction: column;
+            align-items: center;
+        }
 
         @include md {
             margin: 0px !important;
