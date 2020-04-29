@@ -1,5 +1,6 @@
 import React from 'react';
 import { Menu, Icon } from 'semantic-ui-react';
+import { Link } from 'react-router-dom';
 
 const menuSidebar = (props) => {
     return (
@@ -8,20 +9,12 @@ const menuSidebar = (props) => {
                 className='close' 
                 name='x' 
                 size='big'
-                onClick={() => props.setVisible(false)}
+                onClick={() => props.setMenuVisible(false)}
             />
-            <Menu.Item as='a'>
-                Gallery
-            </Menu.Item>
-            <Menu.Item as='a'>
-                The Story
-            </Menu.Item>
-            <Menu.Item as='a'>
-                FAQ
-            </Menu.Item>
-            <Menu.Item as='a'>
-                Contact
-            </Menu.Item>
+            <Link to='/gallery'><Menu.Item>Gallery</Menu.Item></Link>
+            <Link to='/history'><Menu.Item>The Story</Menu.Item></Link>
+            <Link to='/faq'><Menu.Item>FAQ</Menu.Item></Link>
+            <Link to='/contact'><Menu.Item>Contact</Menu.Item></Link>
         </>
     );
 };

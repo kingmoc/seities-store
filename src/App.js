@@ -9,6 +9,7 @@ import ProductContainer from './components/ProductContainer'
 import ProductDetails from './components/ProductDetails'
 import CustomerInfo from './components/CustomerInfo'
 import Footer from './components/Footer'
+import Faq from './components/Faq'
 
 // Private Route Import
 import PrivateRoute from './utils/PrivateRoute'
@@ -19,6 +20,7 @@ function App() {
     const commerce = new Commerce(process.env.REACT_APP_PUBLICKEY_SANDBOX)
 
     const [cartVisible, setCartVisible] = useState(false)
+    const [menuVisible, setMenuVisible] = useState(false)
     const [cart, setCart] = useState()
     const [receipt, setReceipt] = useState()
 
@@ -82,7 +84,9 @@ function App() {
     return (
         <div className="App">
             <CartItemsContext.Provider value={cartHelperFunctions}>
-                <Nav 
+                <Nav
+                    menuVisible={menuVisible}
+                    setMenuVisible={setMenuVisible} 
                     cartVisible={cartVisible} 
                     setCartVisible={setCartVisible}
                     cart={cart}
@@ -91,6 +95,15 @@ function App() {
             {/* Routes */}
             <Route exact path="/" component={Hero} />
             <Route exact path="/" component={ProductContainer} />
+            {/* <Route exact path="/faq" component={Faq} /> */}
+            <Route path="/faq" render={props => {
+                return (
+                    <Faq 
+                        {...props}
+                        setMenuVisible={setMenuVisible}
+                    />
+                )
+            }}/>
             <Route path="/products/:id" render={props => {
                 return (
                     <ProductDetails 
@@ -100,16 +113,6 @@ function App() {
                     />
                 )
             }}/>
-            {/* <Route path='/checkout/:id' render={props => {
-                return (
-                    <CustomerInfo
-                        {...props}
-                        setCartVisible={setCartVisible}
-                        setReceipt={setReceipt}
-                        receipt={receipt}
-                    />
-                )
-            }}/> */}
             <PrivateRoute 
                 component={CustomerInfo}
                 path='/checkout/:id'

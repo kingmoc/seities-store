@@ -13,8 +13,30 @@ const Footer = (props) => {
 
     const handleItemClick = (e, {name}) => {
 
-        if (name === 'Cart') {
-            props.setCartVisible(true)
+        switch (name) {
+            
+            case 'Cart':
+                props.setCartVisible(true)
+                break
+            
+            case 'FAQ':
+                history.push('/faq')
+                break
+
+            case 'Contact':
+                history.push('/contact')
+                break
+
+            case 'The Story':
+                history.push('/history')
+                break
+
+            case 'Gallery':
+                history.push('/gallery')
+                break
+            
+            default:
+                return
         }
 
         setActiveItem(name)

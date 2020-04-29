@@ -8,7 +8,7 @@ import CartSidebar from './sidebars/cartSidebar'
 
 const Nav = (props) => {
 
-    const [visible, setVisible] = useState(false)
+    // const [visible, setVisible] = useState(false)
 
     let history = useHistory()
     const url = history.location.pathname
@@ -18,12 +18,13 @@ const Nav = (props) => {
             <Sidebar
                 as={Menu}
                 animation='overlay'
-                onHide={() => setVisible(false)}
-                visible={visible}
+                onHide={() => props.setMenuVisible(false)}
+                // visible={visible}
+                visible={props.menuVisible}
                 vertical
                 borderless
             >
-                <MenuSidebar setVisible={setVisible}/>
+                <MenuSidebar setMenuVisible={props.setMenuVisible}/>
             </Sidebar>
 
             <Sidebar
@@ -47,7 +48,7 @@ const Nav = (props) => {
                     <Icon 
                         name='bars' 
                         size='large'
-                        onClick={() => setVisible(!visible)}
+                        onClick={() => props.setMenuVisible(!props.menuVisible)}
                         className='hamburger'
                     />
                 )}
