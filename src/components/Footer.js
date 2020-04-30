@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useHistory, Link } from "react-router-dom";
+import { useHistory, Link, useLocation } from "react-router-dom";
 import { Message, Image, Menu } from 'semantic-ui-react';
 
 // Img Import
@@ -10,12 +10,18 @@ const Footer = (props) => {
     const [activeItem, setActiveItem] = useState()
 
     let history = useHistory()
+    let { pathname } = useLocation()
+    console.log(pathname, 'path from footer')
 
     const handleItemClick = (e, {name}) => {
 
         switch (name) {
             
             case 'Cart':
+                if (pathname.includes('checkout')) {
+                    history.push('/')
+                    props.setCartVisible(true)
+                }
                 props.setCartVisible(true)
                 break
             

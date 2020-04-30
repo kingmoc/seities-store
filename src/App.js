@@ -10,6 +10,7 @@ import ProductDetails from './components/ProductDetails'
 import CustomerInfo from './components/CustomerInfo'
 import Footer from './components/Footer'
 import Faq from './components/Faq'
+import History from './components/History'
 
 // Private Route Import
 import PrivateRoute from './utils/PrivateRoute'
@@ -30,9 +31,6 @@ function App() {
                 // console.log(res, 'response from app useEffect')
                 setCart(res)
             })
-
-        // localStorage.removeItem('cart-id')
-
     },[receipt])
     
     
@@ -99,6 +97,14 @@ function App() {
             <Route path="/faq" render={props => {
                 return (
                     <Faq 
+                        {...props}
+                        setMenuVisible={setMenuVisible}
+                    />
+                )
+            }}/>
+            <Route path="/history" render={props => {
+                return (
+                    <History 
                         {...props}
                         setMenuVisible={setMenuVisible}
                     />
