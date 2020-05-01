@@ -9,7 +9,7 @@ const Contact = (props) => {
     const [contactInfo, setContactInfo] = useState({
         name: '',
         email: '',
-        company: '',
+        subject: '',
         message: '',
     })
 

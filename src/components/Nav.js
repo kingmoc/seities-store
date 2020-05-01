@@ -19,7 +19,6 @@ const Nav = (props) => {
                 as={Menu}
                 animation='overlay'
                 onHide={() => props.setMenuVisible(false)}
-                // visible={visible}
                 visible={props.menuVisible}
                 vertical
                 borderless
