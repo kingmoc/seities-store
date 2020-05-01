@@ -202,12 +202,12 @@ const ProductDetails = (props) => {
                 >
                     Add to Cart
                 </Button>
-                <p>
+                {/* <p>
                     Seities frees you to be yourself: a little bit weird, a little bit subversive, and with a 
                     whole world of choice. These are designs that are infinitely wearable and created to inject humour, 
                     unusual little details, and plenty of fun into your wardrobe. 
-                </p>
-                <Divider />
+                </p> */}
+                {/* <Divider /> */}
                 <Menu pointing secondary fluid widths={3}>
                     <Menu.Item
                         name='details'
@@ -238,7 +238,7 @@ const ProductDetails = (props) => {
                 {activeItem === 'sizing' && (
                     <>
                         <Image src={imgSizeGreen}/>
-                        <Image src={imgSizeBlue}/>
+                        {/* <Image src={imgSizeBlue}/> */}
                     </>
                 )}                
                 {activeItem === 'shipping' && (
@@ -276,6 +276,11 @@ const ProductDetails = (props) => {
                     </Container>
                 </Message>
                 <Header textAlign='center'>What is your Seities ...?</Header>
+                <p>
+                    Seities frees you to be yourself: a little bit weird, a little bit subversive, and with a 
+                    whole world of choice. These are designs that are infinitely wearable and created to inject humour, 
+                    unusual little details, and plenty of fun into your wardrobe. 
+                </p>
                 <div className='pics-bottom'>
                     <Image src={gif} />
                     <Image src={picGirl} />

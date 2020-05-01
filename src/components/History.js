@@ -64,6 +64,39 @@ const History = (props) => {
                 entrepreneur success – Yay! 💃 
             </p>
             <Header size='large'>Time For Something New</Header>
+            <p>
+                As I was spending my nights away before falling asleep reading stats on 
+                potential websites; I started to realize I wanted a product to sell.  
+                My online marketing skills were getting better, not to mention a confident 
+                boost coming off freelancertips.  
+            </p>
+            <p>
+                I wanted to find a product I was genuinely 
+                interested in and could get behind from a marketing standpoint.  I figured if 
+                I could check those boxes combined with my creativity 💡 - maybe some magic 
+                could happen!    
+            </p>
+            <Header size='large'>Having A Product, Not so Easy 🤦‍</Header>
+            <p>
+                I found out quickly the woes of trying to manage a product.  
+                The original manufactures were located in London and that became troublesome.   
+                They did great work and I don’t fault them but I spent a lot of time asking 
+                questions without clear answers.  It got to the point where I dreaded calling 
+                and felt more like a nuisance than a partner.  
+            </p>
+            <p>
+                Eventually I cut ties and began to search for U.S. manufactures that could meet 
+                the same quality and every time I got to the plate – it was a big swing & miss! 
+                Either the quality of the shirt was poor or the printing came out bad.  
+                And then when a shirt met our standards it was to expensive 😩 
+            </p>
+            <p>
+                So after some time and not being able to find a solid producer things just 
+                started to fizzle.  I had already spent a lot of money ordering samples and 
+                paying the monthly Shopify cost that continuing became more and more difficult.  
+                One year in and I was out of the product business - for good I thought ...
+            </p>
+            <Header size='large'>The Rebirth! 😁</Header>
 
             
         </Container>

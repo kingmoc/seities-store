@@ -71,7 +71,6 @@ const CustomerInfo = (props) => {
             window.paypal.Buttons({
                 createOrder: (data, actions) => {
                     // console.log(data, 'data from paypal createOrder Function')
-                    // setProcessing(true)
                     return actions.order.create({
                         purchase_units: [
                             {
@@ -100,9 +99,9 @@ const CustomerInfo = (props) => {
                     return actions.resolve();
                 },
                 onApprove: async (data, actions) => {
+                    setActiveIndex(0)
                     setProcessing(true)
-                    // setPaidFor(true)
-                    // setPaidFor(true)
+
                     console.log("Right before await call!!!!")
                     
                     const order = await actions.order.capture()
@@ -151,15 +150,11 @@ const CustomerInfo = (props) => {
                         .then(res => {
                                 console.log(res, 'res from CAPTURING CHECKOUT!!!')
                                 props.setReceipt(res)
-                                // setPaidFor(true)
                                 setProcessing(false)
-                                // setEmail(res.customer.email)
-                                // localStorage.removeItem('cart-id')
-                                // history.push(`/order-complete/${props.tokenId}/${res.id}`)
+                                setTimeout(() => localStorage.removeItem('cart-id'), 3000)
                         })
                         .catch(err => {
                                 window.alert(err.data.error.message)
-                                // setProcessing(false)
                         })
                 }
             }).render(paypalRef)
