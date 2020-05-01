@@ -23,11 +23,24 @@
         .product-title {
             font-size: 1.3rem;
             margin: 10px 0;
+            background-color: #ffffffc2;
+            padding: 8px;
+            border-radius: 21px;
         }
 
         .product-meta {
             padding-bottom: 10px;
             font-size: 1.2em !important;
+            color: black !important;
+            font-weight: bold;
         }
+    }
+
+    .product-card:nth-child(1) {
+        background-color: #a2c961;
+    }
+
+    .product-card:nth-child(2) {
+        background-color: #f9d25e;
     }
 }

@@ -11,10 +11,30 @@ const menuSidebar = (props) => {
                 size='big'
                 onClick={() => props.setMenuVisible(false)}
             />
-            <Link to='/gallery'><Menu.Item>Gallery</Menu.Item></Link>
-            <Link to='/history'><Menu.Item>The Story</Menu.Item></Link>
-            <Link to='/faq'><Menu.Item>FAQ</Menu.Item></Link>
-            <Link to='/contact'><Menu.Item>Contact</Menu.Item></Link>
+            <Link to='/gallery'>
+                <Menu.Item className='menu-items'>
+                    <Icon name='images outline' className='menu-icon'/>
+                    Gallery
+                </Menu.Item>
+            </Link>
+            <Link to='/history'>
+                <Menu.Item className='menu-items'>
+                    <Icon name='history' className='menu-icon'/>
+                    The Story
+                </Menu.Item>
+            </Link>
+            <Link to='/faq'>
+                <Menu.Item className='menu-items'>
+                    <Icon name='question circle outline' className='menu-icon'/>
+                    FAQ
+                </Menu.Item>
+            </Link>
+            <Link to='/contact'>
+                <Menu.Item className='menu-items'>
+                    <Icon name='mail' className='menu-icon'/>
+                    Contact
+                </Menu.Item>
+            </Link>
         </>
     );
 };

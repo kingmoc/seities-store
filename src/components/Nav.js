@@ -16,6 +16,7 @@ const Nav = (props) => {
     return (
         <>
             <Sidebar
+                className='menu-sidebar'
                 as={Menu}
                 animation='overlay'
                 onHide={() => props.setMenuVisible(false)}

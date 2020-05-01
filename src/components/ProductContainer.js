@@ -7,6 +7,8 @@ const ProductContainer = () => {
 
     const commerce = new Commerce(process.env.REACT_APP_PUBLICKEY_SANDBOX)
     const [products, setProducts] = useState([])
+    const [imgLink, setImgLink] = useState(["99Dt8f6/Shot6-color3.png", "FJ3H8bH/Shot5-color.png"])
+
 
     useEffect(() => {
         
@@ -19,7 +21,14 @@ const ProductContainer = () => {
     
     return (
         <div className='products-container'>
-            {products.map(product => <ProductCard product={product} key={product.id}/>)}
+            {products.map((product, i) => (
+                <ProductCard
+                    imgLink={imgLink} 
+                    product={product}
+                    index={i} 
+                    key={product.id}
+                />
+            ))}
         </div>
     );
 };

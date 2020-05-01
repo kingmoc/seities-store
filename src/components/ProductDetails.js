@@ -51,6 +51,7 @@ const ProductDetails = (props) => {
 
         let gallery = []
         let thumbs = {}
+        let mainPhoto = {}
 
         if(product.length !== 0) {
 
@@ -77,10 +78,26 @@ const ProductDetails = (props) => {
                 pic.thumbnail = thumbs[key]
             })
 
-            let mainPhoto = {
-                original: product.media.source,
-                thumbnail: product.media.source,
+            if (productId === "prod_aZWNoyGNYl80JA") {
+
+                mainPhoto = {
+                    original: "https://i.ibb.co/99Dt8f6/Shot6-color3.png",
+                    thumbnail: "https://i.ibb.co/99Dt8f6/Shot6-color3.png",
+                }
             }
+
+            if (productId === "prod_BkyN5YrnAl0b69") {
+
+                mainPhoto = {
+                    original: "https://i.ibb.co/FJ3H8bH/Shot5-color.png",
+                    thumbnail: "https://i.ibb.co/FJ3H8bH/Shot5-color.png",
+                }
+            }
+
+            // let mainPhoto = {
+            //     original: product.media.source,
+            //     thumbnail: product.media.source,
+            // }
 
             gallery.unshift(mainPhoto)
             setImages(gallery)
