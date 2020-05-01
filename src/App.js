@@ -11,6 +11,7 @@ import CustomerInfo from './components/CustomerInfo'
 import Footer from './components/Footer'
 import Faq from './components/Faq'
 import History from './components/History'
+import Contact from './components/Contact'
 
 // Private Route Import
 import PrivateRoute from './utils/PrivateRoute'
@@ -105,6 +106,14 @@ function App() {
             <Route path="/history" render={props => {
                 return (
                     <History 
+                        {...props}
+                        setMenuVisible={setMenuVisible}
+                    />
+                )
+            }}/>
+            <Route path="/contact" render={props => {
+                return (
+                    <Contact 
                         {...props}
                         setMenuVisible={setMenuVisible}
                     />

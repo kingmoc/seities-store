@@ -3,6 +3,7 @@ import { Image, Container, Header, Segment } from 'semantic-ui-react';
 
 //image import
 import joeyg from '../img/joeyg-porch.jpeg'
+import tdcc from '../img/gall_front_op.png'
 
 const History = (props) => {
 
@@ -97,7 +98,46 @@ const History = (props) => {
                 One year in and I was out of the product business - for good I thought ...
             </p>
             <Header size='large'>The Rebirth! 😁</Header>
-
+            <p>
+                Well fast forward and we are announcing some sort of revival … a comeback like 
+                MJ ⛹🏻‍.  A very very interesting set of circumstances have lead to this very moment – 
+                this is why life is beautiful.  At the time of this writing (circa April 2020) a crazy 
+                virus hit the global scene and literally shut down earth! 🌑 
+            </p>
+            <p>
+                I won’t submerse you with the details but let’s just say a lot of people have not only 
+                been infected by the virus physically but economically people and organizations are struggling!  
+                So many people out there are lending their efforts including front line workers 👩🏽‍⚕️ 👨🏼‍⚕️ 
+                and all other ‘essential’ workers.  
+            </p>
+            <p>
+                I’ve been wanting to do my part and it just so happened I’m coming off the heels of completing a 
+                <a href='https://lambdaschool.com/'> software development program</a>.  So I decided to build 
+                this site to sell the remainder of stock left over from my initial endeavor.  I’m 
+                <strong> DONATING 100%</strong> of the proceeds to  
+                <a href='http://tullahomadaycare.com/'><strong> TULLAHOMA DAYCARE CENTER</strong></a>.  
+            </p>
+            <Image src={tdcc} />
+            <p style={{marginTop: '20px'}}>
+                They are local to my hometown and throughout the crazy pandemic they still continue 
+                to operate and provide exemplary child care.  They teach what’s called social distancing, 
+                best sanitary practices and many other important subjects relevant to the times.  
+                They along with a lot of facilities need all the help they can get and I’m hoping this 
+                project will meet my goal and sell the remainder of my stock! 
+            </p>
+            <p>
+                If you happen to have read this far, I’m hoping if you don’t like our shirts you’ll still 
+                donate <a href='http://tullahomadaycare.com/donate/'><strong>HERE</strong></a> and help 
+                out with any amount you can 😊. Just remember through the crazy times 
+                you can have a little Seities and show your spirit through our minimalist 100% organic 
+                custom T-shirts, it will go a long way in helping a local daycare provide top notch child 
+                care to working families of mid to low income.  
+            </p>
+            <p>
+                Thanks for your support and you never know what may happen on the other side 
+                of this COVID19 pandemic -  so stay tuned.  
+            </p>
+ 
             
         </Container>
     );
