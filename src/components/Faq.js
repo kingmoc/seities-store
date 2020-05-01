@@ -98,7 +98,11 @@ const Faq = (props) => {
                     <Container>
                         <p>
                             We accept major credit cards such as Visa, MasterCard, American Express, 
-                            and Discover or direct payments through PayPal  👍
+                            and Discover through PayPal  👍
+                        </p>
+                        <p>
+                            <i>** Should be noted payments are processed through PayPal and we never
+                            see, store, or track payment data or details. ** </i>
                         </p>
                     </Container>
                 </Accordion.Content>

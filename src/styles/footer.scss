@@ -22,6 +22,10 @@
             align-items: center;
         }
 
+        .footer-links-item {
+            padding: 15px !important;
+        }
+
         @include md {
             margin: 0px !important;
             margin-left: 40px !important;

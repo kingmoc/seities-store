@@ -12,6 +12,7 @@ import Footer from './components/Footer'
 import Faq from './components/Faq'
 import History from './components/History'
 import Contact from './components/Contact'
+import CovidBar from './components/CovidBar'
 
 // Private Route Import
 import PrivateRoute from './utils/PrivateRoute'
@@ -82,6 +83,7 @@ function App() {
 
     return (
         <div className="App">
+            <CovidBar />
             <CartItemsContext.Provider value={cartHelperFunctions}>
                 <Nav
                     menuVisible={menuVisible}

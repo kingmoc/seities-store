@@ -56,26 +56,31 @@ const Footer = (props) => {
 
                     <Menu.Menu>
                         <Menu.Item
+                            className='footer-links-item'
                             name='Gallery'
                             active={activeItem === 'Gallery'}
                             onClick={handleItemClick}
                         />
                         <Menu.Item
+                            className='footer-links-item'
                             name='The Story'
                             active={activeItem === 'The Story'}
                             onClick={handleItemClick}
                         />
                         <Menu.Item
+                            className='footer-links-item'
                             name='FAQ'
                             active={activeItem === 'FAQ'}
                             onClick={handleItemClick}
                         />
                         <Menu.Item
+                            className='footer-links-item'
                             name='Contact'
                             active={activeItem === 'Contact'}
                             onClick={handleItemClick}
                         />
                         <Menu.Item
+                            className='footer-links-item'
                             name='Cart'
                             active={activeItem === 'Cart'}
                             onClick={handleItemClick}
