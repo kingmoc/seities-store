@@ -59,14 +59,14 @@ const ProductDetails = (props) => {
 
                 // console.log(asset, 'asset from forEeach')
 
-                if(asset.data.ext === 'png') {
+                if(asset.data.ext === 'jpg') {
                     gallery = [...gallery, {
                         original: asset.url,
                         thumbnail: ''
                     }]
                 }
 
-                if(asset.data.ext === 'jpg') {
+                if(asset.data.ext === 'png') {
                     thumbs[asset.data.name.charAt(0)] = asset.url
                 }
             })
