@@ -13,6 +13,7 @@ import Faq from './components/Faq'
 import History from './components/History'
 import Contact from './components/Contact'
 import CovidBar from './components/CovidBar'
+import Gallery from './components/Gallery'
 
 // Private Route Import
 import PrivateRoute from './utils/PrivateRoute'
@@ -116,6 +117,14 @@ function App() {
             <Route path="/contact" render={props => {
                 return (
                     <Contact 
+                        {...props}
+                        setMenuVisible={setMenuVisible}
+                    />
+                )
+            }}/>
+            <Route path="/gallery" render={props => {
+                return (
+                    <Gallery 
                         {...props}
                         setMenuVisible={setMenuVisible}
                     />

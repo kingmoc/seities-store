@@ -5,14 +5,31 @@ import { CartItemsContext } from '../../App'
 
 const CartItems = (props) => {
 
-    // console.log(props, 'props from sidebar for items')
+    console.log(props, 'props from sidebar for items')
 
     const helpFnc = useContext(CartItemsContext)
 
+    const imgLinkSrc = (productID) => {
+        console.log(productID, "product id from imgLinkSrc call")
+
+        if (productID === process.env.REACT_APP_MELON_ID) {
+            return process.env.REACT_APP_WATER_SRC
+        }
+
+        if (productID === process.env.REACT_APP_PINE_ID) {
+            return process.env.REACT_APP_PINE_SRC
+        }
+    }   
+
     return (
         <>
-            <Image size='tiny' src={props.item.media.source} />
-            <List.Content>
+            <Image
+                rounded 
+                size='tiny' 
+                // src={props.item.media.source}
+                src={imgLinkSrc(props.item.product_id)} 
+            />
+            <List.Content className='cart-item-container'>
                 <h3 size='huge' color='green'>{props.item.name}</h3>
                 <h4>{props.item.variants[0].option_name}</h4>
                 <div className='quanity-group'>

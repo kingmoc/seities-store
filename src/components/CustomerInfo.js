@@ -228,7 +228,7 @@ const CustomerInfo = (props) => {
                     } else {
                         setInvalidDiscountCode(false)
                         setLiveObject(res.live)
-                        setDiscountCode(null)
+                        setDiscountCode('')
                     }
                     
                     setNoDiscountCode(false)
@@ -270,19 +270,19 @@ const CustomerInfo = (props) => {
                                 <CheckoutItems item={item}/>
                             </Container>
                         ))}
-                        <Container>
+                        <Container className='discount-container'>
                             {!paidFor && (
                                 <>
                                     <Divider horizontal>Discount Code</Divider>
 
                                     <form className='discount-code' onSubmit={handleDiscountClick}>
-                                        <Input size='large' onChange={handleDiscountCode} />
+                                        <Input size='large' onChange={handleDiscountCode} value={discountCode}/>
                                         <Button color='black'>Apply</Button>     
                                     </form>
                                 </>
                             )}
-                            {noDiscountCode && <p>No Discount Code Entered</p>}
-                            {invalidDiscountCode && <p>Invalid Code!</p>}
+                            {noDiscountCode && <p className='invalid'>No Discount Code Entered</p>}
+                            {invalidDiscountCode && <p className='invalid'>Invalid Code!</p>}
                             <Divider horizontal>Cart Totals</Divider>
                             {!paidFor && <p className='shipping-message'>Currently we only ship to United States with a flat rate of $4.50</p>}
                             {liveObject && (
@@ -312,12 +312,6 @@ const CustomerInfo = (props) => {
                 </div>
                 {liveObject && <Header>{liveObject.total.formatted_with_symbol}</Header>}
             </Accordion>
-            {/* {true && (
-                <>
-                    <div className='loader-box'></div>
-                    <Image size='tiny' className='payment-loader' src={gif} />
-                </>
-            )} */}
             {paidFor ? (
                 <>
                     {processing && (

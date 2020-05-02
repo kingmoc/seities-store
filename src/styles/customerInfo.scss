@@ -19,6 +19,15 @@
 
         .active-container {
             width: 119%;
+
+            .discount-container {
+
+                .invalid {
+                    color: #de0024a1;
+                    text-align: center;
+                    margin-top: 10px;
+                }
+            }
         }
     }
 
@@ -124,7 +133,7 @@
     margin: 0 auto;
     z-index: 2;
     position: absolute !important;
-    top: 72%;
+    top: 90%;   
     left: 40%;
 }
 

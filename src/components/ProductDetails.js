@@ -78,7 +78,7 @@ const ProductDetails = (props) => {
                 pic.thumbnail = thumbs[key]
             })
 
-            if (productId === "prod_aZWNoyGNYl80JA") {
+            if (productId === process.env.REACT_APP_MELON_ID) {
 
                 mainPhoto = {
                     original: "https://i.ibb.co/99Dt8f6/Shot6-color3.png",
@@ -86,7 +86,7 @@ const ProductDetails = (props) => {
                 }
             }
 
-            if (productId === "prod_BkyN5YrnAl0b69") {
+            if (productId === process.env.REACT_APP_PINE_ID) {
 
                 mainPhoto = {
                     original: "https://i.ibb.co/FJ3H8bH/Shot5-color.png",
@@ -299,10 +299,10 @@ const ProductDetails = (props) => {
                     unusual little details, and plenty of fun into your wardrobe. 
                 </p>
                 <div className='pics-bottom'>
-                    <Image src={gif} />
-                    <Image src={picGirl} />
-                    <Image src={pic1} />
-                    <Image src={picBoth} />
+                    <Image rounded src={gif} />
+                    <Image rounded src={picGirl} />
+                    <Image rounded src={pic1} />
+                    <Image rounded src={picBoth} />
                 </div>
                 <Header textAlign='center'>Ready to Show Yourself!</Header>
                 {product.length !==0 && (
