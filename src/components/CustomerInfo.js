@@ -314,7 +314,7 @@ const CustomerInfo = (props) => {
             </Accordion>
             {paidFor ? (
                 <>
-                    {true && (
+                    {processing && (
                         <>
                             <div className='loader-box'></div>
                             <Image size='tiny' className='payment-loader' src={gif} />
