@@ -1,5 +1,9 @@
 .faq-container {
 
+    @include md {
+        width: 80% !important;
+    }
+
     p {
         line-height: 1.7;
         color: #7d7d7d;

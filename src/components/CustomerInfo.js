@@ -314,7 +314,7 @@ const CustomerInfo = (props) => {
             </Accordion>
             {paidFor ? (
                 <>
-                    {processing && (
+                    {true && (
                         <>
                             <div className='loader-box'></div>
                             <Image size='tiny' className='payment-loader' src={gif} />
@@ -325,19 +325,22 @@ const CustomerInfo = (props) => {
                             <Container className='payment-complete'>
                                 <div className='top-items'>
                                     <Icon name='check circle outline' size='huge' color='green'/>
-                                    <p>{liveObject.total.formatted_with_symbol}</p>
+                                    {/* <p>{liveObject.total.formatted_with_symbol}</p> */}
                                     <p>Paid</p>
                                 </div>
                                 <iframe src="https://giphy.com/embed/3osxYdXvsGw6wT5lIY" frameBorder="0" class="giphy-embed" width="100%" height="315"></iframe>
-                                <p>
-                                    A copy of your receipt has been emailed to <span>{email && email}</span>
-                                </p>
-                                <p>
-                                    Thanks for supporting all efforts in helping the 
-                                    Tullahoma Daycare Center! You can check out the latest news and
-                                    events here: <a href="http://tullahomadaycare.com/">tullahomadaycare.com</a>
-                                </p>
-                                <Link to='/'><Button primary size='big' fluid>Shop Again</Button></Link>
+                                <Container className='payment-complete-info'>
+                                    <p>
+                                        {/* A copy of your receipt has been emailed to <span>{email && email}</span> */}
+                                        A copy of your receipt has been emailed to <span>email</span>
+                                    </p>
+                                    <p>
+                                        Thanks for supporting all efforts in helping the 
+                                        Tullahoma Daycare Center! You can check out the latest news and
+                                        events here: <a href="http://tullahomadaycare.com/">tullahomadaycare.com</a>
+                                    </p>
+                                    <Link to='/'><Button primary size='big' fluid>Shop Again</Button></Link>
+                                </Container>
                             </Container>
                         </>
                     )}

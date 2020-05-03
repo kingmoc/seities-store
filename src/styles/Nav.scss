@@ -37,6 +37,13 @@ nav {
 
     .nav-group-1 {
         display: flex;
+
+        img {
+            
+            @include md {
+                width: 220px !important;
+            }
+        }
     }
 
     .nav-group-2 {

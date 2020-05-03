@@ -1,5 +1,9 @@
 .history-container {
 
+    @include md {
+        width: 80% !important;
+    }
+
     p {
         color: #716f6f;
         line-height: 1.7;

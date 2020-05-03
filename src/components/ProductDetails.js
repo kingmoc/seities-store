@@ -158,7 +158,13 @@ const ProductDetails = (props) => {
             </section>
             <ImageGallery items={images} showFullscreenButton={false} showPlayButton={false} />
             <Container>
-                <Header textAlign='center'>{product.name}</Header>
+                <Header 
+                    textAlign='center' 
+                    size='large'
+                    style={{marginTop: '20px'}}
+                >
+                    {product.name}
+                </Header>
                 {product.length !==0 && (
                     <>
                         <div className='price-quanity'>
@@ -173,11 +179,11 @@ const ProductDetails = (props) => {
                             />
                             <Header>{product.price.formatted_with_symbol}</Header>
                         </div>
-
                         <div className='all-btn-sizes'>
                             {product.variants[0].options.map(size => {
                                 return(
-                                    <Button 
+                                    <Button
+                                        // size='big' 
                                         className='button-sizes'
                                         basic 
                                         key={size.id}
@@ -298,8 +304,8 @@ const ProductDetails = (props) => {
                     whole world of choice. These are designs that are infinitely wearable and created to inject humour, 
                     unusual little details, and plenty of fun into your wardrobe. 
                 </p>
+                <Image rounded src={gif} style={{margin: '0 auto'}} />
                 <div className='pics-bottom'>
-                    <Image rounded src={gif} />
                     <Image rounded src={picGirl} />
                     <Image rounded src={pic1} />
                     <Image rounded src={picBoth} />

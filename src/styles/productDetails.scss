@@ -2,10 +2,16 @@
 
     display: flex;
     align-items: baseline;
-    justify-content: space-evenly;
+    // justify-content: space-evenly;
+    justify-content: center;
 
     .quanity-drop {
         width: 40% !important;
+        margin-right: 20px;
+
+        @include md {
+            width: 20% !important;
+        }
     }
 }
 
@@ -24,12 +30,30 @@
     display: flex;
     justify-content: center;
     margin: 20px 0;
+    
+    @include md {
+        flex-wrap: wrap;
+    }
+
+    .button-sizes {
+        width: 40%;
+        
+        @include md {
+            width: 33%;
+            margin-bottom: 10px !important;
+        }
+    }
 }
 
 .add-cart-button {
-    margin: 30px auto !important;
+    // margin: 30px auto !important;
+    margin: 20px auto !important;
     width: 80%;
     display: block !important;
+
+    @include md {
+        width: 50%;
+    }
 }
 
 .navigate-menu {

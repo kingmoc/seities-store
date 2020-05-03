@@ -1,5 +1,9 @@
 .contact-container {
 
+    @include md {
+        width: 80% !important;
+    }
+
     .contact-button {
         margin-top: 25px !important;
         background-color: #34b49f !important;
