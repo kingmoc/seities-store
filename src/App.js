@@ -142,7 +142,7 @@ function App() {
             }}/>
             <PrivateRoute 
                 component={CustomerInfo}
-                // component={CITEST}
+                // component={CITEST}  
                 path='/checkout/:id'
                 setCartVisible={setCartVisible}
                 setReceipt={setReceipt}

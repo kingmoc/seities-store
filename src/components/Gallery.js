@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import { Container, Image, Header } from 'semantic-ui-react';
+import { Container, Image, Header, Button } from 'semantic-ui-react';
 
 // Image Import
 import pic1 from '../img/gallery/1.JPG'
@@ -14,6 +14,7 @@ import pic9 from '../img/gallery/9.JPG'
 import pic10 from '../img/gallery/10.JPG'
 import pic11 from '../img/gallery/11.JPG'
 import pic12 from '../img/gallery/12.JPG'
+import { Link } from 'react-router-dom';
 
 const Gallery = (props) => {
 
@@ -40,8 +41,9 @@ const Gallery = (props) => {
             <Image rounded src={pic8} />
             <Image rounded src={pic12} />
             <Image rounded src={pic11} />
+            <Link to='/'><Button primary size='big' fluid>shop this look</Button></Link>
         </Container>
-    );
+    );  
 };
 
 export default Gallery;

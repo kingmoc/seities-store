@@ -20,7 +20,7 @@ const ProductCard = ({product, imgLink, index}) => {
                 src={`https://i.ibb.co/${imgLink[index]}`}
                 onClick={goToDetails} 
             />
-            <Card.Header className='product-title'>{product.name}</Card.Header>
+            <Card.Header className='product-title' onClick={goToDetails}>{product.name}</Card.Header>
             <Card.Meta className='product-meta'>{product.price.formatted_with_symbol}</Card.Meta>
         </Card>
     );

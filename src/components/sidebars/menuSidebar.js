@@ -1,8 +1,10 @@
 import React from 'react';
 import { Menu, Icon } from 'semantic-ui-react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 
 const menuSidebar = (props) => {
+
+    
     return (
         <>
             <Icon 
@@ -15,6 +17,12 @@ const menuSidebar = (props) => {
                 <Menu.Item className='menu-items'>
                     <Icon name='images outline' className='menu-icon'/>
                     Gallery
+                </Menu.Item>
+            </Link>
+            <Link to='/' onClick={() => props.setMenuVisible(false)}>
+                <Menu.Item className='menu-items'>
+                    <Icon name='shopping bag' className='menu-icon'/>
+                    Shop
                 </Menu.Item>
             </Link>
             <Link to='/history'>

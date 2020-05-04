@@ -23,7 +23,7 @@ const History = (props) => {
                 I was always looking for that diamond in the rough.  Flippa is basically the eBay of buying 
                 and selling websites.  You can also snatch domains, mobile apps and more – there’s all kinds of website goodies 🎊  
             </p>
-            <Header size='large'>Remembering my Online Pursuits ...</Header>
+            <Header size='large'>Remembering my online pursuits ...</Header>
             <p>
                 By this time I had bought an iOS app, “Math Guru – make math fun” that ended up being a complete 
                 disaster because I was not an iOS developer.  And further I created all these weird accounts 
@@ -64,7 +64,7 @@ const History = (props) => {
                 And that is exactly what I did before I sold it therefore becoming my first 
                 entrepreneur success – Yay! 💃 
             </p>
-            <Header size='large'>Time For Something New</Header>
+            <Header size='large'>Time for something new</Header>
             <p>
                 As I was spending my nights away before falling asleep reading stats on 
                 potential websites; I started to realize I wanted a product to sell.  
@@ -77,7 +77,7 @@ const History = (props) => {
                 I could check those boxes combined with my creativity 💡 - maybe some magic 
                 could happen!    
             </p>
-            <Header size='large'>Having A Product, Not so Easy 🤦‍</Header>
+            <Header size='large'>Having a product, not so easy 🤦‍</Header>
             <p>
                 I found out quickly the woes of trying to manage a product.  
                 The original manufactures were located in London and that became troublesome.   
@@ -97,7 +97,7 @@ const History = (props) => {
                 paying the monthly Shopify cost that continuing became more and more difficult.  
                 One year in and I was out of the product business - for good I thought ...
             </p>
-            <Header size='large'><a id='rebirth'>The Rebirth! 😁</a></Header>
+            <Header size='large'><a id='rebirth'>The rebirth! 😁</a></Header>
             <p>
                 Well fast forward and we are announcing some sort of revival … a comeback like 
                 MJ ⛹🏻‍.  A very very interesting set of circumstances have lead to this very moment – 
