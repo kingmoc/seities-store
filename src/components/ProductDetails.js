@@ -260,8 +260,8 @@ const ProductDetails = (props) => {
                 )}
                 {activeItem === 'sizing' && (
                     <>
-                        <Image src={imgSizeGreen}/>
-                        {/* <Image src={imgSizeBlue}/> */}
+                        <Image src={imgSizeGreen} className='sizing-img'/>
+                        {/* <Image src={imgSizeBlue}/> girls image */}
                     </>
                 )}                
                 {activeItem === 'shipping' && (

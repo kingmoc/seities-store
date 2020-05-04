@@ -56,8 +56,8 @@ const CustomerInfo = (props) => {
 
         /* *** Loading Paypal Script *** */
         const script = document.createElement('script')
-        script.src = `https://www.paypal.com/sdk/js?client-id=${process.env.REACT_APP_PAYPAL_SANDBOX}&disable-funding=credit`
-        // script.src = `https://www.paypal.com/sdk/js?client-id=${process.env.REACT_APP_PAYPAL_LIVE}&disable-funding=credit`
+        // script.src = `https://www.paypal.com/sdk/js?client-id=${process.env.REACT_APP_PAYPAL_SANDBOX}&disable-funding=credit`
+        script.src = `https://www.paypal.com/sdk/js?client-id=${process.env.REACT_APP_PAYPAL_LIVE}&disable-funding=credit`
         script.addEventListener('load', () => setLoaded(true))
         document.body.appendChild(script)
     },[props.receipt])
@@ -171,6 +171,12 @@ const CustomerInfo = (props) => {
             }
         }
 
+        // if (x.childNodes.length > 1) {
+        //     for(let i=0; i<x.childNodes.length-1; i++) {
+        //         x.childNodes[i].style.display = "none"
+        //     }
+        // }
+
     },[loaded, liveObject])
 
     const lineItemsParse = () => {
@@ -272,6 +278,7 @@ const CustomerInfo = (props) => {
                         ))}
                         <Container className='discount-container'>
                             {!paidFor && (
+                            // {false && (
                                 <>
                                     <Divider horizontal>Discount Code</Divider>
 
@@ -285,6 +292,7 @@ const CustomerInfo = (props) => {
                             {invalidDiscountCode && <p className='invalid'>Invalid Code!</p>}
                             <Divider horizontal>Cart Totals</Divider>
                             {!paidFor && <p className='shipping-message'>Currently we only ship to United States with a flat rate of $4.50</p>}
+                            {/* {false && <p className='shipping-message'>Currently we only ship to United States with a flat rate of $4.50</p>} */}
                             {liveObject && (
                                 <div className='cart-totals'>
                                     <section>
@@ -313,26 +321,33 @@ const CustomerInfo = (props) => {
                 {liveObject && <Header>{liveObject.total.formatted_with_symbol}</Header>}
             </Accordion>
             {paidFor ? (
+            // {true ? (
                 <>
                     {processing && (
+                    // {true && (
                         <>
                             <div className='loader-box'></div>
+                            {/* <div className='loader-box'>
+                                <Image size='tiny' className='payment-loader' src={gif} />
+                            </div> */}
                             <Image size='tiny' className='payment-loader' src={gif} />
                         </>
                     )}
                     {!processing && (
+                    // {false && (
                         <>
                             <Container className='payment-complete'>
                                 <div className='top-items'>
                                     <Icon name='check circle outline' size='huge' color='green'/>
-                                    {/* <p>{liveObject.total.formatted_with_symbol}</p> */}
-                                    <p>Paid</p>
+                                    <p></p>
+                                    <p>{liveObject.total.formatted_with_symbol}</p>
+                                    {/* <p>Paid</p> */}
                                 </div>
                                 <iframe src="https://giphy.com/embed/3osxYdXvsGw6wT5lIY" frameBorder="0" class="giphy-embed" width="100%" height="315"></iframe>
                                 <Container className='payment-complete-info'>
                                     <p>
-                                        {/* A copy of your receipt has been emailed to <span>{email && email}</span> */}
-                                        A copy of your receipt has been emailed to <span>email</span>
+                                        {/* A copy of your receipt has been emailed to <span>email</span> */}
+                                        A copy of your receipt has been emailed to <span>{email && email}</span>
                                     </p>
                                     <p>
                                         Thanks for supporting all efforts in helping the 

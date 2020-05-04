@@ -43,6 +43,7 @@ const Nav = (props) => {
                 />
             </Sidebar>
 
+            {/* <nav> */}
             <nav style={url.includes('checkout') ? {justifyContent: 'center'} : null}>
                 {!url.includes('checkout') && (
                     <Icon 
@@ -92,11 +93,13 @@ const Nav = (props) => {
                             </Label>
                         )
                     ) : (
-                        <Icon 
-                            name='shopping cart' 
-                            size='large'
-                            onClick={() => props.setCartVisible(!props.cartVisible)}
-                        />
+                        !url.includes('checkout') && (
+                            <Icon 
+                                name='shopping cart' 
+                                size='large'
+                                onClick={() => props.setCartVisible(!props.cartVisible)}
+                            />
+                        )
                     )}
                 </div>
             </nav>

@@ -76,8 +76,8 @@ const Faq = (props) => {
                 <Accordion.Content active={activeIndex === 2}>
                     <Container>
                         <p>
-                            We're are located in the heartland of the US -
-                            a.k.a Tennessee 🏴󠁵󠁳󠁴󠁮󠁿
+                            We're located in the heartland specifically the southeast of the US - 
+                            below the Dixie line in Tennessee 🏴󠁵󠁳󠁴󠁮󠁿
                         </p>
                     </Container>
                 </Accordion.Content>
@@ -102,7 +102,7 @@ const Faq = (props) => {
                         </p>
                         <p>
                             <i>** Should be noted payments are processed through PayPal and we never
-                            see, store, or track payment data or details. ** </i>
+                            see, store, track payment data or details. ** </i>
                         </p>
                     </Container>
                 </Accordion.Content>
@@ -159,7 +159,9 @@ const Faq = (props) => {
                             shipped same day.  Any order after will be shipped the following day.  
                         </p>
                         <p>
-                            All orders are shipped via USPS - Standard Shipping.  Expect your order
+                            All orders are shipped via USPS - Standard Shipping.  You will 
+                            recieve an email of your receipt once the order is placed and another email
+                            once the item is shipped.  Expect your order
                             to arrive within 3-5 days depending on your location ✈️
                         </p>
                     </Container>
@@ -283,7 +285,7 @@ const Faq = (props) => {
                         <p>
                             The shirts currently on the site were manufactured in London.
                             This will be the last batch produced in London and moving forward
-                            all items will be manufactured in Tennessee. 
+                            all items will be manufactured in the United States. 
                         </p>
                         <p>
                             We will look for quality and trusted manufactures locally to continue production.
