@@ -28,19 +28,27 @@
 .all-btn-sizes {
 
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
     margin: 20px 0;
     
-    @include md {
-        flex-wrap: wrap;
+    @include sm {
+        flex-wrap: nowrap;
     }
 
     .button-sizes {
-        width: 40%;
+        // width: 40%;
+        padding: 10px 5px !important;
+        width: 25%;
+        margin-bottom: 10px !important;
+
+        @include sm {
+            width: 15%;
+        }
         
         @include md {
-            width: 33%;
-            margin-bottom: 10px !important;
+            width: 15%;
+            padding: 15px 0px !important;
         }
     }
 }
