@@ -39,4 +39,16 @@
     height: 80px;
     font-size: 30px !important;
     padding: 0 0 !important;
+    display: flex !important;
+    justify-content: center;
+
+    @include lg {
+        width: 50% !important;
+        // color: black !important
+    }
+
+    @include xl {
+        width: 30% !important;
+        // color: black !important
+    }
 }

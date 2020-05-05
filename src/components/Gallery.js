@@ -53,7 +53,7 @@ const Gallery = (props) => {
                     className='gall-button' 
                     primary 
                     size='big' 
-                    fluid
+                    // fluid
                 >
                     shop this look
                 </Button>
