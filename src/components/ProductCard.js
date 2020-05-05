@@ -16,7 +16,6 @@ const ProductCard = ({product, imgLink, index}) => {
         <Card className='product-card'>
             <Image 
                 // src={product.media.source}
-                // src={product.assets[0].url}
                 src={`https://i.ibb.co/${imgLink[index]}`}
                 onClick={goToDetails} 
             />

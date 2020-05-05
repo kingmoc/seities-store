@@ -61,16 +61,16 @@ const Nav = (props) => {
                     />
                 </Link>
 
-                <div className='nav-group-middle'>
-                    {!url.includes('checkout') && (
+                {!url.includes('checkout') && (
+                    <div className='nav-group-middle'>
                         <ul>
                             <li><Link to='/gallery'>Gallery</Link></li>
                             <li><Link to='/history'>The Story</Link></li>
                             <li><Link to='/faq'>FAQ</Link></li>
                             <li><Link to='/contact'>Contact</Link></li>
                         </ul>
-                    )}
-                </div>
+                    </div>
+                )}
 
                 {props.cart && props.cart.total_unique_items > 0 ? (
                     !url.includes('checkout') && (

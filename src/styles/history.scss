@@ -4,6 +4,21 @@
         width: 80% !important;
     }
 
+    @include lg {
+        width: 70% !important;
+        background-color: #81d0c354;
+        padding: 10px 50px 54px;
+        border-radius: 35px;
+    }
+
+    img {
+
+        @include lg {
+            width: 70%;
+            margin: 20px auto 40px;
+        }
+    }
+
     p {
         color: #716f6f;
         line-height: 1.7;

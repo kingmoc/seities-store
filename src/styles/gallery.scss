@@ -1,13 +1,41 @@
+.gall-header {
+    text-align: center;
+    margin-top: 30px !important;
+
+    @include lg {
+        font-size: 3rem !important;
+    }
+}
+
+
 .gallery {
-    display: flex;
+    display: flex !important;
     flex-direction: column;
 
-    img {
-        margin: 25px 0
+    @include lg {
+        flex-direction: row;
+        justify-content: space-evenly;
     }
 
-    h1 {
-        text-align: center;
-        margin-top: 30px !important;
+    div {
+
+        @include lg {
+            width: 40%;
+        }
     }
+
+    img {
+        margin: 25px 0;
+        
+        // @include lg {
+        //     width: 40%;
+        // }
+    }
+}
+
+.gall-button {
+    width: 70% !important;
+    margin: 30px auto 0px !important;
+    height: 80px;
+    font-size: 30px !important;
 }

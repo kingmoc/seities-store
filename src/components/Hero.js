@@ -1,14 +1,16 @@
 import React from 'react';
-import { Image } from 'semantic-ui-react';
+import { Image, Header } from 'semantic-ui-react';
 
 import HeroOne from '../img/hero1.jpg'
 
 const Hero = () => {
     return (
-        <>
-            <Image src={HeroOne} style={{marginTop: '20px'}} centered/>
-            {/* <Header size='large' className='hero-text'>100% Organic Cotton</Header> */}
-        </>
+        <div className='hero-image-overlay'>
+            <div className='hero-text'>
+                <p>noun</p>
+                <span>a quality peculiar to oneself : SELFHOOD, INDIVIDUALITY</span>
+            </div>
+        </div>
     );
 };
 

@@ -1,3 +1,7 @@
+.customer-info {
+    color: red;
+}
+
 .summary-drop {
 
     display: flex;
@@ -11,6 +15,10 @@
     @include md {
         width: 80% !important;
         margin: 20px auto;
+    }
+
+    @include lg {
+        width: 60% !important;
     }
 
     .summary-content {
@@ -75,6 +83,10 @@
         width: 70%;
         margin: 0 auto;
     }
+
+    @include lg {
+        width: 50%; 
+    }
 }
 
 .discount-code {
@@ -120,6 +132,10 @@
             width: 70% !important;
         }
 
+        @include lg {
+            width: 50% !important;
+        }
+
         span {
             color: #2196F3;
         }
@@ -140,23 +156,8 @@
             font-size: 1.1rem;
         }
     }
-
-
 }
 
 .payment-loader {
     margin: 30px auto 0px;
-    // z-index: 2;
-    // position: absolute !important;
-    // top: 90%;   
-    // left: 40%;
-
-    // @include md {
-    //     top: 73%;
-    //     left: 44%;
-    // }
 }
-
-// .loader-box {
-//     height: 200px;
-// }

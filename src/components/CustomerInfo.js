@@ -316,10 +316,6 @@ const CustomerInfo = (props) => {
                 <>
                     {processing && (
                         <>
-                            {/* <div className='loader-box'></div> */}
-                            {/* <div className='loader-box'>
-                                <Image size='tiny' className='payment-loader' src={gif} />
-                            </div> */}
                             <Image size='tiny' className='payment-loader' src={gif} />
                         </>
                     )}
@@ -330,7 +326,7 @@ const CustomerInfo = (props) => {
                                     <Icon name='check circle outline' size='huge' color='green'/>
                                     <p></p>
                                     <p>{liveObject.total.formatted_with_symbol}</p>
-                                    {/* <p>Paid</p> */}
+                                    <p>Paid</p>
                                 </div>
                                 <iframe src="https://giphy.com/embed/3osxYdXvsGw6wT5lIY" frameBorder="0" class="giphy-embed" width="100%" height="315"></iframe>
                                 <Container className='payment-complete-info'>

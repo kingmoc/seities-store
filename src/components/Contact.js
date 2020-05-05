@@ -52,56 +52,58 @@ const Contact = (props) => {
 
     return (
         <Container className='contact-container'>
-            <Image style={{marginTop: '30px'}} src={hero} />
-            <Header size='large'>Have Questions/Concerns? Give us a Shoutout!</Header>
-            {/* Contact Form */}
-            <Form
-                style={{marginTop: '20px'}}
-                className='contact-form' 
-                size='big'
-                onSubmit={handleSubmit} 
-            >
-                <Form.Input
-                    required 
-                    label='Email'
-                    name='email'
-                    type='email'
-                    placeholder='xyz@example.com'
-                    onChange={handleChange}
-                    value={contactInfo.email}
-                />
-                <Form.Input 
-                    label='Name'
-                    name='name'
-                    placeholder='Enter Name'
-                    onChange={handleChange}
-                    value={contactInfo.name}
-                />
-                <Form.Input
-                    required 
-                    label='Subject'
-                    name='subject'
-                    placeholder='Ex. Subject'
-                    onChange={handleChange}
-                    value={contactInfo.subject}
-                />
-                <TextArea
-                    required
-                    name='message' 
-                    style={{ minHeight: 150 }}
-                    placeholder='Type message here ...'
-                    onChange={handleChange}
-                    value={contactInfo.message}
-                />
-                <Button
-                    className='contact-button' 
-                    size='huge'
-                    fluid 
-                    type='submit'
+            <Image style={{margin: '30px 0px'}} src={hero} />
+            <div>
+                <Header size='large'>Have Questions/Concerns? Give us a Shoutout!</Header>
+                {/* Contact Form */}
+                <Form
+                    style={{marginTop: '20px'}}
+                    className='contact-form' 
+                    size='big'
+                    onSubmit={handleSubmit} 
                 >
-                    Send Message
-                </Button>
-            </Form>
+                    <Form.Input
+                        required 
+                        label='Email'
+                        name='email'
+                        type='email'
+                        placeholder='xyz@example.com'
+                        onChange={handleChange}
+                        value={contactInfo.email}
+                    />
+                    <Form.Input 
+                        label='Name'
+                        name='name'
+                        placeholder='Enter Name'
+                        onChange={handleChange}
+                        value={contactInfo.name}
+                    />
+                    <Form.Input
+                        required 
+                        label='Subject'
+                        name='subject'
+                        placeholder='Ex. Subject'
+                        onChange={handleChange}
+                        value={contactInfo.subject}
+                    />
+                    <TextArea
+                        required
+                        name='message' 
+                        style={{ minHeight: 150 }}
+                        placeholder='Type message here ...'
+                        onChange={handleChange}
+                        value={contactInfo.message}
+                    />
+                    <Button
+                        className='contact-button' 
+                        size='huge'
+                        fluid 
+                        type='submit'
+                    >
+                        Send Message
+                    </Button>
+                </Form>
+            </div>
         </Container>
     );
 };
