@@ -54,54 +54,47 @@ const Nav = (props) => {
                     />
                 )}
 
-                <div className='nav-group-1'>
-                    <Link to='/'>
-                        <Image 
-                            src={logoText} 
-                            size={url.includes('checkout') ? 'medium' : 'small'}
-                        />
-                    </Link>
+                <Link to='/'>
+                    <Image 
+                        src={logoText} 
+                        size={url.includes('checkout') ? 'medium' : 'small'}
+                    />
+                </Link>
 
+                <div className='nav-group-middle'>
                     {!url.includes('checkout') && (
                         <ul>
-                            <li><Link to='#'>Gallery</Link></li>
-                            <li><Link to='#'>The Story</Link></li>
+                            <li><Link to='/gallery'>Gallery</Link></li>
+                            <li><Link to='/history'>The Story</Link></li>
+                            <li><Link to='/faq'>FAQ</Link></li>
+                            <li><Link to='/contact'>Contact</Link></li>
                         </ul>
                     )}
                 </div>
 
-                <div className='nav-group-2'>
-                    {!url.includes('checkout') && (
-                        <ul>
-                            <li><Link to='#'>FAQ</Link></li>
-                            <li><Link to='#'>Contact</Link></li>
-                        </ul>
-                    )}
-
-                    {props.cart && props.cart.total_unique_items > 0 ? (
-                        !url.includes('checkout') && (
-                            <Label 
-                                color='blue' 
-                                onClick={() => props.setCartVisible(!props.cartVisible)}
-                                className='cart-icon'
-                            >
-                                <Icon 
-                                    name='shopping cart' 
-                                    size='large'
-                                />
-                                {props.cart.total_unique_items}
-                            </Label>
-                        )
-                    ) : (
-                        !url.includes('checkout') && (
+                {props.cart && props.cart.total_unique_items > 0 ? (
+                    !url.includes('checkout') && (
+                        <Label 
+                            color='blue' 
+                            onClick={() => props.setCartVisible(!props.cartVisible)}
+                            className='cart-icon'
+                        >
                             <Icon 
                                 name='shopping cart' 
                                 size='large'
-                                onClick={() => props.setCartVisible(!props.cartVisible)}
                             />
-                        )
-                    )}
-                </div>
+                            {props.cart.total_unique_items}
+                        </Label>
+                    )
+                ) : (
+                    !url.includes('checkout') && (
+                        <Icon 
+                            name='shopping cart' 
+                            size='large'
+                            onClick={() => props.setCartVisible(!props.cartVisible)}
+                        />
+                    )
+                )}
             </nav>
         </>
     );

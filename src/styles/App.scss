@@ -1,0 +1,11 @@
+.App {
+    min-height: 100vh;
+    overflow: hidden;
+    position: relative;
+    padding-bottom: 630px;
+    /* display: block; not sure if needed*/
+
+    @include md {
+        padding-bottom: 370px;
+    }
+}

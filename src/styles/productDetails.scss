@@ -36,8 +36,11 @@
         flex-wrap: nowrap;
     }
 
+    @include lg {
+        flex-wrap: wrap;
+    }
+
     .button-sizes {
-        // width: 40%;
         padding: 10px 5px !important;
         width: 25%;
         margin-bottom: 10px !important;
@@ -49,6 +52,10 @@
         @include md {
             width: 15%;
             padding: 15px 0px !important;
+        }
+
+        @include lg {
+            width: 25%;
         }
     }
 }
@@ -78,20 +85,61 @@
 .back-story {
     background-color: #98d9ce73 !important;
     margin-top: 40px !important;
+
+    @include lg {
+        text-align: center;
+        width: 80%;
+        margin: 40px auto !important;
+    }
 }
 
 .pics-bottom {
-    color: red;
     display: flex;
     flex-direction: column;
 
+    @include lg {
+        flex-direction: row;
+        justify-content: space-evenly;
+    }
+
+    .pics-bottom-right {
+        
+        @include lg {
+            color: red;
+            display: flex;
+            flex-direction: column;
+            width: 50%;
+            align-items: center;
+        }
+
+        img {
+            
+            @include lg {
+                width: 95%;
+            }
+        }
+    }
+
     img {
-        margin: 25px 0
+        margin: 25px 0;
+
+        @include lg {
+            width: 43%;
+        }
     }
 }
 
 .fade-in {
     animation: fadeIn ease 15s;
+}
+
+.bottom-buttons {
+    
+    @include lg {
+        flex-wrap: nowrap;
+        width: 90%;
+        margin: 0 auto;
+    }
 }
 
 @keyframes fadeIn {
@@ -102,4 +150,35 @@
 .sizing-img {
     width: 60%;
     margin: 0 auto;
+}
+
+.flex-container-desktop {
+
+    @include lg {
+        display: flex;
+        justify-content: space-around;
+    }
+
+    .image-gallery {
+
+        @include lg {
+            width: 60%;
+            margin: 0 auto;
+        }
+
+    }
+
+    .product-selection {
+
+        @include lg {
+            width: 30% !important;
+        }
+    }
+}
+
+.what-is-your {
+    width: 80%;
+    margin: 0 auto;
+    text-align: center;
+    margin-bottom: 60px;
 }

@@ -156,137 +156,140 @@ const ProductDetails = (props) => {
                 <Link className='shop-link' to='/'>Shop /</Link>
                 <p to='/'>{product.name}</p>
             </section>
-            <ImageGallery items={images} showFullscreenButton={false} showPlayButton={false} />
+            <div className='flex-container-desktop'>
+                <ImageGallery
+                    items={images} 
+                    showFullscreenButton={false} 
+                    showPlayButton={false} 
+                />
+                <Container className='product-selection'>
+                    <Header 
+                        textAlign='center' 
+                        size='large'
+                        style={{marginTop: '20px'}}
+                    >
+                        {product.name}
+                    </Header>
+                    {product.length !==0 && (
+                        <>
+                            <div className='price-quanity'>
+                                <Dropdown
+                                    className="quanity-drop"
+                                    onChange={getQuanity}
+                                    value={numShirts} 
+                                    fluid
+                                    placeholder='How Many' 
+                                    selection
+                                    options={numOfShirts}
+                                />
+                                <Header>{product.price.formatted_with_symbol}</Header>
+                            </div>
+                            <div className='all-btn-sizes'>
+                                {product.variants[0].options.map(size => {
+                                    return(
+                                        <Button
+                                            // size='big' 
+                                            className='button-sizes'
+                                            basic 
+                                            key={size.id}
+                                            onClick={handleVariantInfo}
+                                            value={size.id}
+                                            id={product.variants[0].id}
+                                        >
+                                            {size.name}
+                                        </Button>
+                                    )
+                                })}
+                            </div>
+                            {!variantInfo && (
+                                <Label
+                                    className='label-sizes' 
+                                    basic 
+                                    color='red' 
+                                >
+                                    Please select size
+                                </Label>
+                            )}
+                            {inCart && (
+                                <Label
+                                    className='label-sizes' 
+                                    basic 
+                                    color='red' 
+                                >
+                                    Item Already in Cart! 
+                                </Label>
+                            )}
+                        </>
+                    )}
+                    <Button 
+                        onClick={handleButtonAddCart}
+                        // fluid 
+                        className='add-cart-button'
+                        size='big' 
+                        color='green'
+                    >
+                        Add to Cart
+                    </Button>
+                    <Menu pointing secondary fluid widths={3}>
+                        <Menu.Item
+                            name='details'
+                            active={activeItem === 'details'}
+                            onClick={handleTabs}
+                        />
+                        <Menu.Item
+                            name='sizing'
+                            active={activeItem === 'sizing'}
+                            onClick={handleTabs}
+                        />
+                        <Menu.Item
+                            name='shipping'
+                            active={activeItem === 'shipping'}
+                            onClick={handleTabs}
+                        />
+                    </Menu>
+                    {activeItem === 'details' && (
+                        <>
+                            <ul>
+                                <li>100% Organic Cotton</li>
+                                <li>Earth Friendly Inks & Dyes</li>
+                                <li>Uniquely Designed</li>
+                                <li>Minimalist Style for Any Occassion</li>
+                            </ul>
+                        </>
+                    )}
+                    {activeItem === 'sizing' && (
+                        <>
+                            <Image src={imgSizeGreen} className='sizing-img'/>
+                            {/* <Image src={imgSizeBlue}/> girls image */}
+                        </>
+                    )}                
+                    {activeItem === 'shipping' && (
+                        <>
+                            <Container>
+                                <p>
+                                    Currently we only provide shipping to the United States &#128532;
+                                </p>
+                                <p>
+                                    Shipping cost will be a flat rate: <strong>$4.50</strong>  
+                                </p>
+                                <p>
+                                    If you want to make a bulk 
+                                    order (10 or more) - please contact us to arrange shipping.
+                                </p>
+                                <p>
+                                    We want you to be 100% satisfied with your Seities Apparel purchase. 
+                                    Items can be returned or exchanged within 30 days of delivery.
+                                </p>
+                            </Container>
+                        </>
+                    )}
+                </Container>
+            </div>
+
             <Container>
-                <Header 
-                    textAlign='center' 
-                    size='large'
-                    style={{marginTop: '20px'}}
-                >
-                    {product.name}
-                </Header>
-                {product.length !==0 && (
-                    <>
-                        <div className='price-quanity'>
-                            <Dropdown
-                                className="quanity-drop"
-                                onChange={getQuanity}
-                                value={numShirts} 
-                                fluid
-                                placeholder='How Many' 
-                                selection
-                                options={numOfShirts}
-                            />
-                            <Header>{product.price.formatted_with_symbol}</Header>
-                        </div>
-                        <div className='all-btn-sizes'>
-                            {product.variants[0].options.map(size => {
-                                return(
-                                    <Button
-                                        // size='big' 
-                                        className='button-sizes'
-                                        basic 
-                                        key={size.id}
-                                        onClick={handleVariantInfo}
-                                        value={size.id}
-                                        id={product.variants[0].id}
-                                    >
-                                        {size.name}
-                                    </Button>
-                                )
-                            })}
-                        </div>
-                        {!variantInfo && (
-                            <Label
-                                className='label-sizes' 
-                                basic 
-                                color='red' 
-                            >
-                                Please select size
-                            </Label>
-                        )}
-                        {inCart && (
-                            <Label
-                                className='label-sizes' 
-                                basic 
-                                color='red' 
-                            >
-                                Item Already in Cart! 
-                            </Label>
-                        )}
-                    </>
-                )}
-                <Button 
-                    onClick={handleButtonAddCart}
-                    // fluid 
-                    className='add-cart-button'
-                    size='big' 
-                    color='green'
-                >
-                    Add to Cart
-                </Button>
-                {/* <p>
-                    Seities frees you to be yourself: a little bit weird, a little bit subversive, and with a 
-                    whole world of choice. These are designs that are infinitely wearable and created to inject humour, 
-                    unusual little details, and plenty of fun into your wardrobe. 
-                </p> */}
-                {/* <Divider /> */}
-                <Menu pointing secondary fluid widths={3}>
-                    <Menu.Item
-                        name='details'
-                        active={activeItem === 'details'}
-                        onClick={handleTabs}
-                    />
-                    <Menu.Item
-                        name='sizing'
-                        active={activeItem === 'sizing'}
-                        onClick={handleTabs}
-                    />
-                    <Menu.Item
-                        name='shipping'
-                        active={activeItem === 'shipping'}
-                        onClick={handleTabs}
-                    />
-                </Menu>
-                {activeItem === 'details' && (
-                    <>
-                        <ul>
-                            <li>100% Organic Cotton</li>
-                            <li>Earth Friendly Inks & Dyes</li>
-                            <li>Uniquely Designed</li>
-                            <li>Minimalist Style for Any Occassion</li>
-                        </ul>
-                    </>
-                )}
-                {activeItem === 'sizing' && (
-                    <>
-                        <Image src={imgSizeGreen} className='sizing-img'/>
-                        {/* <Image src={imgSizeBlue}/> girls image */}
-                    </>
-                )}                
-                {activeItem === 'shipping' && (
-                    <>
-                        <Container>
-                            <p>
-                                Currently we only provide shipping to the United States &#128532;
-                            </p>
-                            <p>
-                                Shipping cost will be a flat rate: <strong>$4.50</strong>  
-                            </p>
-                            <p>
-                                If you want to make a bulk 
-                                order (10 or more) - please contact us to arrange shipping.
-                            </p>
-                            <p>
-                                We want you to be 100% satisfied with your Seities Apparel purchase. 
-                                Items can be returned or exchanged within 30 days of delivery.
-                            </p>
-                        </Container>
-                    </>
-                )}
                 <Message className='back-story'>
                     <Container>
-                    <Message.Header>Back Story</Message.Header>
+                    <Message.Header style={{marginBottom: '15px'}}>Back Story</Message.Header>
                         <p>
                             Seities was established to bring discrete character to versatile tees.
                         </p>
@@ -299,7 +302,7 @@ const ProductDetails = (props) => {
                     </Container>
                 </Message>
                 <Header textAlign='center'>What is your Seities ...?</Header>
-                <p>
+                <p className='what-is-your'>
                     Seities frees you to be yourself: a little bit weird, a little bit subversive, and with a 
                     whole world of choice. These are designs that are infinitely wearable and created to inject humour, 
                     unusual little details, and plenty of fun into your wardrobe. 
@@ -307,12 +310,14 @@ const ProductDetails = (props) => {
                 <Image rounded src={gif} style={{margin: '0 auto'}} />
                 <div className='pics-bottom'>
                     <Image rounded src={picGirl} />
-                    <Image rounded src={pic1} />
-                    <Image rounded src={picBoth} />
+                    <div className='pics-bottom-right'>
+                        <Image rounded src={pic1} />
+                        <Image rounded src={picBoth} />
+                    </div>
                 </div>
                 <Header textAlign='center'>Ready to Show Yourself!</Header>
                 {product.length !==0 && (
-                    <div className='all-btn-sizes'>
+                    <div className='all-btn-sizes bottom-buttons'>
                     {product.variants[0].options.map(size => {
                         return(
                             <Button 

@@ -8,7 +8,6 @@ import Hero from './components/Hero'
 import ProductContainer from './components/ProductContainer'
 import ProductDetails from './components/ProductDetails'
 import CustomerInfo from './components/CustomerInfo'
-import CITEST from './misc/CI-testing' // testing component
 import Footer from './components/Footer'
 import Faq from './components/Faq'
 import History from './components/History'
@@ -142,7 +141,6 @@ function App() {
             }}/>
             <PrivateRoute 
                 component={CustomerInfo}
-                // component={CITEST}  
                 path='/checkout/:id'
                 setCartVisible={setCartVisible}
                 setReceipt={setReceipt}

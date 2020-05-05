@@ -5,6 +5,10 @@ nav {
     justify-content: space-around;
     padding-top: 15px;
 
+    @include lg {
+        justify-content: center;
+    }
+
     .hamburger {
 
         @include lg {
@@ -12,46 +16,41 @@ nav {
         }
     }
 
-    ul {
+    img {
+            
+        @include md {
+            width: 220px !important;
+        }
+    }
 
+    .nav-group-middle {
         display: none;
 
         @include lg {
-            list-style: none;
-            width: 170px;
-            display: flex;
-            justify-content: space-around;
-            padding-left: 0;
+            display: block;
+            width: 50%;
         }
-    }
-
-    ul li {
-        display: inline-block;
-        text-transform: uppercase;
-        font-size: 1.1rem;
-    }
-
-    ul li a {
-        color: black;
-    }
-
-    .nav-group-1 {
-        display: flex;
-
-        img {
-            
-            @include md {
-                width: 220px !important;
-            }
-        }
-    }
-
-    .nav-group-2 {
-        display: flex;
-        align-items: center;
 
         ul {
-            width: 120px;
+    
+            @include lg {
+                list-style: none;
+                width: 100%;
+                display: flex;
+                justify-content: center;
+                padding-left: 0;
+            }
+        }
+
+        ul li {
+            display: inline-block;
+            text-transform: uppercase;
+            font-size: 1.2rem;
+            margin-right: 40px;
+        }
+
+        ul li a {
+            color: black;
         }
     }
 }

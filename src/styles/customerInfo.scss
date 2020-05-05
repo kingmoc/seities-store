@@ -145,16 +145,16 @@
 }
 
 .payment-loader {
-    margin: 0 auto;
-    z-index: 2;
-    position: absolute !important;
-    top: 90%;   
-    left: 40%;
+    margin: 30px auto 0px;
+    // z-index: 2;
+    // position: absolute !important;
+    // top: 90%;   
+    // left: 40%;
 
-    @include md {
-        top: 73%;
-        left: 44%;
-    }
+    // @include md {
+    //     top: 73%;
+    //     left: 44%;
+    // }
 }
 
 // .loader-box {
