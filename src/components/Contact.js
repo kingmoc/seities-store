@@ -52,8 +52,8 @@ const Contact = (props) => {
 
     return (
         <Container className='contact-container'>
-            <Image style={{margin: '30px 0px'}} src={hero} />
-            <div>
+            <Image src={hero} />
+            <div className='form-all'>
                 <Header size='large'>Have Questions/Concerns? Give us a Shoutout!</Header>
                 {/* Contact Form */}
                 <Form
