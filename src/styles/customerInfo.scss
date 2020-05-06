@@ -21,6 +21,10 @@
         width: 60% !important;
     }
 
+    @include xl {
+        width: 40% !important;
+    }
+
     .summary-content {
         width: 85%;
 
