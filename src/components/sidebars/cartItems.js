@@ -1,16 +1,17 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Header, Button, Icon, Input, Image, List } from 'semantic-ui-react';
+import Commerce from '@chec/commerce.js'
 
 import { CartItemsContext } from '../../App'
 
 const CartItems = (props) => {
+    // console.log(props, 'props from sidebar for items')
 
-    console.log(props, 'props from sidebar for items')
-
+    const [noQuantity, setNoQuantity] = useState()
+    
     const helpFnc = useContext(CartItemsContext)
 
     const imgLinkSrc = (productID) => {
-        console.log(productID, "product id from imgLinkSrc call")
 
         if (productID === process.env.REACT_APP_MELON_ID) {
             return process.env.REACT_APP_WATER_SRC
@@ -51,14 +52,15 @@ const CartItems = (props) => {
                         // positive 
                         className='quan-buttons'
                         onClick={() => {
-                            let newQuanity = props.item.quantity + 1
+                            let newQuanity = props.item.quantity + 1            
                             helpFnc.addQuantity(props.item.id, newQuanity)
                         }}
                     > 
                         <Icon name='plus' /> 
                     </Button>
                 </div>
-                <Header className='cart-item-total'>${props.item.line_total.formatted_with_symbol}</Header>
+                {/* <h5 className='cart-item-total'>${props.item.line_total.formatted_with_symbol}</h5> */}
+                {noQuantity && <p>Sorry - Only X left</p>}
             </List.Content>
         </>
     );

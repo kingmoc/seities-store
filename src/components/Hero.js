@@ -7,7 +7,7 @@ const Hero = () => {
     return (
         <div className='hero-image-overlay'>
             <div className='hero-text'>
-                <p>noun</p>
+                <p>noun.</p>
                 <span>a quality peculiar to oneself : SELFHOOD, INDIVIDUALITY</span>
             </div>
         </div>

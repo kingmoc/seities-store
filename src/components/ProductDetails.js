@@ -186,18 +186,32 @@ const ProductDetails = (props) => {
                             </div>
                             <div className='all-btn-sizes'>
                                 {product.variants[0].options.map(size => {
+                                    let soldOut = false
+                                    let lessThanThree = false
+ 
+                                    if (size.quantity === 0) {
+                                        soldOut = true
+                                    }
+        
+                                    if (size.quantity <= 3) {
+                                        lessThanThree = true
+                                    }
+
                                     return(
-                                        <Button
-                                            // size='big' 
-                                            className='button-sizes'
-                                            basic 
-                                            key={size.id}
-                                            onClick={handleVariantInfo}
-                                            value={size.id}
-                                            id={product.variants[0].id}
-                                        >
-                                            {size.name}
-                                        </Button>
+                                        <div className='buttons-quantity'>
+                                            <Button
+                                                className='button-sizes'
+                                                basic 
+                                                key={size.id}
+                                                onClick={handleVariantInfo}
+                                                value={size.id}
+                                                id={product.variants[0].id}
+                                                disabled={soldOut} 
+                                            >
+                                                {size.name}
+                                            </Button>
+                                            {lessThanThree && !soldOut && <p>only {size.quantity} left!</p>}
+                                        </div>
                                     )
                                 })}
                             </div>
@@ -318,18 +332,33 @@ const ProductDetails = (props) => {
                 <Header textAlign='center'>Ready to Show Yourself!</Header>
                 {product.length !==0 && (
                     <div className='all-btn-sizes bottom-buttons'>
-                    {product.variants[0].options.map(size => {
-                        return(
-                            <Button 
-                                className='button-sizes'
-                                basic 
-                                key={size.id}
-                                onClick={handleVariantInfo}
-                                value={size.id}
-                                id={product.variants[0].id}
-                            >
-                                {size.name}
-                            </Button>
+                        {product.variants[0].options.map(size => {
+                            let soldOut = false
+                            let lessThanThree = false
+
+                            if (size.quantity === 0) {
+                                soldOut = true
+                            }
+
+                            if (size.quantity <= 3) {
+                                lessThanThree = true
+                            }
+
+                            return(
+                                <div className='buttons-quantity'>
+                                    <Button 
+                                        className='button-sizes'
+                                        basic 
+                                        key={size.id}
+                                        onClick={handleVariantInfo}
+                                        value={size.id}
+                                        id={product.variants[0].id}
+                                        disabled={soldOut}
+                                    >
+                                        {size.name}
+                                    </Button>
+                                    {lessThanThree && !soldOut && <p>only {size.quantity} left!</p>}
+                                </div>
                             )
                         })}
                     </div>

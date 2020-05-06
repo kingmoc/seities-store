@@ -88,7 +88,8 @@ const Nav = (props) => {
                     )
                 ) : (
                     !url.includes('checkout') && (
-                        <Icon 
+                        <Icon
+                            className='cart-icon' 
                             name='shopping cart' 
                             size='large'
                             onClick={() => props.setCartVisible(!props.cartVisible)}

@@ -31,6 +31,8 @@
     flex-wrap: wrap;
     justify-content: center;
     margin: 20px 0;
+    flex-direction: row;
+    width: 100%;
     
     @include sm {
         flex-wrap: nowrap;
@@ -42,20 +44,34 @@
 
     .button-sizes {
         padding: 10px 5px !important;
-        width: 25%;
-        margin-bottom: 10px !important;
+        width: 100%;
+        margin: 0 0 !important;
 
-        @include sm {
-            width: 15%;
-        }
+        // @include sm {
+        //     width: 15%;
+        // }
         
-        @include md {
-            width: 15%;
-            padding: 15px 0px !important;
-        }
+        // @include md {
+        //     width: 15%;
+        //     padding: 15px 0px !important;
+        // }
 
-        @include lg {
-            width: 25%;
+        // @include lg {
+        //     width: 25%;
+        // }
+    }
+
+    .buttons-quantity {
+        width: 45%;
+        height: 65px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-right: 10px;
+
+        p {
+            color: #ee7b8e;
+            font-size: 0.9rem;
         }
     }
 }

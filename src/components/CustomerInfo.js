@@ -63,6 +63,20 @@ const CustomerInfo = (props) => {
     },[props.receipt])
 
     useEffect(() => {
+        // console.log(tokenId, 'testtestest')
+        liveObject && tokenId && (
+            liveObject.line_items.map(item => {
+                console.log(item, 'item for testing quantity')
+                commerce.checkout.checkQuantity(tokenId, 'optn_yA6nldYg4wEWbz', {
+                    amount: item.quantity,
+                  })
+                  .then(res =>console.log(res, 'res from testing quantity'))
+                  .catch(err => console.log(err))
+            })
+        )
+    }, [liveObject])
+
+    useEffect(() => {
 
         console.log(liveObject, 'liveobject inside generating buttonss!!!!!!')
 
@@ -347,7 +361,7 @@ const CustomerInfo = (props) => {
             ) : (
                 <>
                     <Container><div className='paypal-box' ref={v => paypalRef = v} /></Container>
-                    <Header textAlign='center' onClick={goToCart}>
+                    <Header textAlign='center' onClick={goToCart} className='add-pointer'>
                         <Icon name='pointing left' />
                         Return to Cart
                     </Header>

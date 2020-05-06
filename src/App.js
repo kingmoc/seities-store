@@ -27,6 +27,7 @@ function App() {
     const [menuVisible, setMenuVisible] = useState(false)
     const [cart, setCart] = useState()
     const [receipt, setReceipt] = useState()
+    const [qInfo, setQInfo] = useState()
 
     useEffect(() => {
         commerce.cart.retrieve()
@@ -80,6 +81,10 @@ function App() {
             }
 
         }
+    }
+
+    const getQuantityInfo = (someObject) => {
+        setQInfo(someObject)
     }
 
     return (
@@ -136,6 +141,7 @@ function App() {
                         {...props}
                         setCartVisible={setCartVisible}
                         addToCart={addToCart}
+                        getQuantityInfo={getQuantityInfo}
                     />
                 )
             }}/>
