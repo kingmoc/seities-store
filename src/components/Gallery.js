@@ -16,7 +16,7 @@ import pic10 from '../img/gallery/10.JPG'
 import pic11 from '../img/gallery/11.JPG'
 import pic12 from '../img/gallery/12.JPG'
 import kate1 from '../img/gallery/kate-barn.jpg'
-import kate2 from '../img/gallery/kate-barn2.jpg'
+import kate2 from '../img/gallery/kate-barn2-bw.jpg'
 
 
 const Gallery = (props) => {
