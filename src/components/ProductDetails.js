@@ -78,26 +78,10 @@ const ProductDetails = (props) => {
                 pic.thumbnail = thumbs[key]
             })
 
-            if (productId === process.env.REACT_APP_MELON_ID) {
-
-                mainPhoto = {
-                    original: "https://i.ibb.co/99Dt8f6/Shot6-color3.png",
-                    thumbnail: "https://i.ibb.co/99Dt8f6/Shot6-color3.png",
-                }
+            let mainPhoto = {
+                original: product.media.source,
+                thumbnail: product.media.source,
             }
-
-            if (productId === process.env.REACT_APP_PINE_ID) {
-
-                mainPhoto = {
-                    original: "https://i.ibb.co/FJ3H8bH/Shot5-color.png",
-                    thumbnail: "https://i.ibb.co/FJ3H8bH/Shot5-color.png",
-                }
-            }
-
-            // let mainPhoto = {
-            //     original: product.media.source,
-            //     thumbnail: product.media.source,
-            // }
 
             gallery.unshift(mainPhoto)
             setImages(gallery)
@@ -189,7 +173,7 @@ const ProductDetails = (props) => {
                                     let soldOut = false
                                     let lessThanThree = false
  
-                                    if (size.quantity === 0) {
+                                    if (size.quantity === 0) {  
                                         soldOut = true
                                     }
         
@@ -405,3 +389,20 @@ export default ProductDetails;
 //   )
 
 // commerce.cart.add('productId', [num of items], {vrtn: vrtnID})
+
+
+// if (productId === process.env.REACT_APP_MELON_ID) {
+
+//     mainPhoto = {
+//         original: "https://i.ibb.co/99Dt8f6/Shot6-color3.png",
+//         thumbnail: "https://i.ibb.co/99Dt8f6/Shot6-color3.png",
+//     }
+// }
+
+// if (productId === process.env.REACT_APP_PINE_ID) {
+
+//     mainPhoto = {
+//         original: "https://i.ibb.co/FJ3H8bH/Shot5-color.png",
+//         thumbnail: "https://i.ibb.co/FJ3H8bH/Shot5-color.png",
+//     }
+// }

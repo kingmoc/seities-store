@@ -10,6 +10,11 @@
     .input-quanity {
         width: 40px;
         margin: 0 3px;
+
+        input {
+            text-align: center !important;
+            padding: 0 0 !important; 
+        }
     }
 }
 

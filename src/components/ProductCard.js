@@ -15,8 +15,8 @@ const ProductCard = ({product, imgLink, index}) => {
     return (
         <Card className='product-card'>
             <Image 
-                // src={product.media.source}
-                src={`https://i.ibb.co/${imgLink[index]}`}
+                src={product.media.source}
+                // src={`https://i.ibb.co/${imgLink[index]}`}
                 onClick={goToDetails} 
             />
             <Card.Header className='product-title' onClick={goToDetails}>{product.name}</Card.Header>
