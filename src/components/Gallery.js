@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import { Container, Image, Header, Button } from 'semantic-ui-react';
+import { Link } from 'react-router-dom';
 
 // Image Import
 import pic1 from '../img/gallery/1.JPG'
@@ -14,7 +15,9 @@ import pic9 from '../img/gallery/9.JPG'
 import pic10 from '../img/gallery/10.JPG'
 import pic11 from '../img/gallery/11.JPG'
 import pic12 from '../img/gallery/12.JPG'
-import { Link } from 'react-router-dom';
+import kate1 from '../img/gallery/kate-barn.jpg'
+import kate2 from '../img/gallery/kate-barn2.jpg'
+
 
 const Gallery = (props) => {
 
@@ -33,6 +36,7 @@ const Gallery = (props) => {
             <Container className='gallery'>
                 <div>
                     <Image rounded src={pic2} />
+                    <Image rounded src={kate1} />
                     <Image rounded src={pic5} />
                     <Image rounded src={pic4} />
                     <Image rounded src={pic3} />
@@ -43,6 +47,7 @@ const Gallery = (props) => {
                     <Image rounded src={pic10} />
                     <Image rounded src={pic7} />
                     <Image rounded src={pic1} />
+                    <Image rounded src={kate2} />
                     <Image rounded src={pic8} />
                     <Image rounded src={pic12} />
                     <Image rounded src={pic11} />

@@ -2,7 +2,8 @@ import React, {useEffect, useState} from 'react';
 import { Container, Header, Image, Form, Button, Divider, TextArea } from 'semantic-ui-react';
 
 //image import
-import hero from '../img/contact.png'
+import hero from '../img/contact.png'   
+import kate from '../img/contact-kate.jpg'
 
 const Contact = (props) => {
 
@@ -52,7 +53,7 @@ const Contact = (props) => {
 
     return (
         <Container className='contact-container'>
-            <Image src={hero} />
+            <Image src={kate} />
             <div className='form-all'>
                 <Header size='large'>Have Questions/Concerns? Give us a Shoutout!</Header>
                 {/* Contact Form */}
