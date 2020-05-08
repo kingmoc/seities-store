@@ -56,8 +56,8 @@ const CustomerInfo = (props) => {
 
         /* *** Loading Paypal Script *** */
         const script = document.createElement('script')
-        // script.src = `https://www.paypal.com/sdk/js?client-id=${process.env.REACT_APP_PAYPAL_SANDBOX}&disable-funding=credit`
-        script.src = `https://www.paypal.com/sdk/js?client-id=${process.env.REACT_APP_PAYPAL_LIVE}&disable-funding=credit`
+        script.src = `https://www.paypal.com/sdk/js?client-id=${process.env.REACT_APP_PAYPAL_SANDBOX}&disable-funding=credit`
+        // script.src = `https://www.paypal.com/sdk/js?client-id=${process.env.REACT_APP_PAYPAL_LIVE}&disable-funding=credit`
         script.addEventListener('load', () => setLoaded(true))
         document.body.appendChild(script)
     },[props.receipt])
