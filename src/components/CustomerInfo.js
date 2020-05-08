@@ -298,7 +298,7 @@ const CustomerInfo = (props) => {
                             {noDiscountCode && <p className='invalid'>No Discount Code Entered</p>}
                             {invalidDiscountCode && <p className='invalid'>Invalid Code!</p>}
                             <Divider horizontal>Cart Totals</Divider>
-                            {!paidFor && <p className='shipping-message'>Currently we only ship to United States with a flat rate of $4.50</p>}
+                            {!paidFor && <p className='shipping-message'>Currently we only ship to United States with a flat rate of $5.00</p>}
                             {liveObject && (
                                 <div className='cart-totals'>
                                     <section>
