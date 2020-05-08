@@ -159,9 +159,9 @@ const Faq = (props) => {
                             shipped same day.  Any order after will be shipped the following day.  
                         </p>
                         <p>
-                            All orders are shipped via USPS - Standard Shipping.  You will 
+                            All orders are shipped via USPS - First Class.  You will 
                             recieve an email of your receipt once the order is placed and another email
-                            once the item is shipped.  Expect your order
+                            once the item is shipped (with tracking info).  Expect your order
                             to arrive within 3-5 days depending on your location ✈️
                         </p>
                     </Container>
