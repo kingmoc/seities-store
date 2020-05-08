@@ -39,7 +39,7 @@ function App() {
     
     
     const addToCart = (productId, quantity, variantInfo) => {
-        console.log(productId, quantity, variantInfo, 'info from product details')
+        // console.log(productId, quantity, variantInfo, 'info from product details')
 
         commerce.cart.add(productId, quantity, variantInfo)
             .then(res => {

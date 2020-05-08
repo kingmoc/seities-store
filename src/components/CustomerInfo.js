@@ -11,7 +11,7 @@ import CheckoutItems from './CheckoutItems'
 import gif from '../img/loader.gif'
 
 const CustomerInfo = (props) => {
-    console.log(props, 'props from Customer Info')
+    // console.log(props, 'props from Customer Info')
 
     const commerce = new Commerce(process.env.REACT_APP_PUBLICKEY_SANDBOX)
 
@@ -45,7 +45,7 @@ const CustomerInfo = (props) => {
                     country: "US"
                 })
                     .then(res => {  
-                        console.log(res, 'res from appplying shipping')
+                        // console.log(res, 'res from appplying shipping')
                         setLiveObject(res.live)
                     })
                     .catch(err => console.log(err, 'ERROR!!'))
@@ -66,11 +66,11 @@ const CustomerInfo = (props) => {
         // console.log(tokenId, 'testtestest')
         liveObject && tokenId && (
             liveObject.line_items.map(item => {
-                console.log(item, 'item for testing quantity')
+                // console.log(item, 'item for testing quantity')
                 commerce.checkout.checkQuantity(tokenId, 'optn_yA6nldYg4wEWbz', {
                     amount: item.quantity,
                   })
-                  .then(res =>console.log(res, 'res from testing quantity'))
+                //   .then(res =>console.log(res, 'res from testing quantity'))
                   .catch(err => console.log(err))
             })
         )
@@ -78,7 +78,7 @@ const CustomerInfo = (props) => {
 
     useEffect(() => {
 
-        console.log(liveObject, 'liveobject inside generating buttonss!!!!!!')
+        // console.log(liveObject, 'liveobject inside generating buttonss!!!!!!')
 
         if(loaded && liveObject) {
             // console.log(loaded, 'value for boolean loaded')
@@ -115,8 +115,6 @@ const CustomerInfo = (props) => {
                 onApprove: async (data, actions) => {
                     setActiveIndex(0)
                     setProcessing(true)
-
-                    console.log("Right before await call!!!!")
                     
                     const order = await actions.order.capture()
 
@@ -157,12 +155,12 @@ const CustomerInfo = (props) => {
                         }
                     }
 
-                    console.log(order, 'order from paypal capture')
-                    console.log(final, 'final for capture')
+                    // console.log(order, 'order from paypal capture')
+                    // console.log(final, 'final for capture')
 
                     commerce.checkout.capture(tokenId, final)
                         .then(res => {
-                                console.log(res, 'res from CAPTURING CHECKOUT!!!')
+                                // console.log(res, 'res from CAPTURING CHECKOUT!!!')
                                 props.setReceipt(res)
                                 setProcessing(false)
                                 setTimeout(() => localStorage.removeItem('cart-id'), 3000)

@@ -3,7 +3,7 @@ import { useHistory } from "react-router-dom";
 import { Card, Button, Image } from 'semantic-ui-react';
 
 const ProductCard = ({product, imgLink, index}) => {
-    console.log(product, 'props from product list call')
+    // console.log(product, 'props from product list call')
 
     let history = useHistory()
 

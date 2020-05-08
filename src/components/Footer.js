@@ -11,7 +11,6 @@ const Footer = (props) => {
 
     let history = useHistory()
     let { pathname } = useLocation()
-    console.log(pathname, 'path from footer')
 
     const handleItemClick = (e, {name}) => {
 

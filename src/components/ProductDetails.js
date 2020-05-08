@@ -32,7 +32,7 @@ const ProductDetails = (props) => {
     useEffect(() => {
         commerce.products.retrieve(productId)
           .then(res => {
-            console.log(res, 'data from retreive products ...')
+            // console.log(res, 'data from retreive products ...')
             setProduct(res)
           })
           .catch(err => console.log(err))

@@ -7,7 +7,7 @@ import CartItems from './cartItems'
 
 const CartSidebar = (props) => {
 
-    console.log(props, 'props from cart')
+    // console.log(props, 'props from cart')
 
     const commerce = new Commerce(process.env.REACT_APP_PUBLICKEY_SANDBOX)
     const [proceedToCheckout, setProcceedToCheckout] = useState()
