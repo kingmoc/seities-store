@@ -140,7 +140,7 @@ const Faq = (props) => {
                 <Accordion.Content active={activeIndex === 5}>
                     <Container>
                         <p>
-                            We charge a <strong>FLAT</strong> rate of <span><strong>$5.00</strong></span>
+                            We charge a <strong>FLAT</strong> rate of <span><strong>$4.00</strong></span>
                         </p>
                     </Container>
                 </Accordion.Content>
