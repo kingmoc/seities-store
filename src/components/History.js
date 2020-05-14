@@ -49,7 +49,7 @@ const History = (props) => {
             </p>
             <p>
                 I snuck in a quick domain purchase 
-                <a href='https://www.simpleknowledge.com' target="_blank" rel='noopener'> simpleknowledge.com </a> 
+                <a href='http://www.simpleknowledge.com' target="_blank" rel='noopener'> simpleknowledge.com </a> 
                 before my first success <a href='https://freelancertips.com/' target="_blank" rel='noopener'>freelancertips.com</a>.  
                 Ohh the many things I learned rebuilding Freelancertips from scratch using Wordpress.  
             </p>
