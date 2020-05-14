@@ -296,7 +296,7 @@ const ProductDetails = (props) => {
                             desirable design is limited: when you choose a Seities tee you’re unlikely 
                             to see anyone else wearing the same style as you.
                         </p>
-                        <Link to='#'>Read More ...</Link>
+                        <Link to='/history'>Read More ...</Link>
                     </Container>
                 </Message>
                 <Header textAlign='center'>What is your Seities ...?</Header>
