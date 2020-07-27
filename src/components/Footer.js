@@ -52,7 +52,7 @@ const Footer = (props) => {
             <div className='footer'>
                 <Menu vertical inverted className='footer-links'>
                     <Menu.Item className='links-menu'>
-                        <Menu.Header>Important Links</Menu.Header>
+                        <Menu.Header>Important Links!</Menu.Header>
 
                         <Menu.Menu>
                             <Menu.Item
